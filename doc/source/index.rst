@@ -10,6 +10,8 @@ and I will be adding content in the near future.
    :maxdepth: 2
    :caption: Contents:
 
+   first_notebook
+
 Indices and tables
 ==================
 

@@ -1,2 +1,9 @@
+# python virtual environment
 .venv/
+
+# documentation build directory
 doc/build/
+
+# jupyter notebook folders/files
+.ipynb_checkpoints/
+debug.log
