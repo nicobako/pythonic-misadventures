@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
-    - name: Install dependencies
+    - name: Install dependencies, build and deploy docs
       run: |
         python -m venv .venv
         source .venv/bin/activate
@@ -30,8 +30,6 @@ jobs:
         sphinx-build --version
         python -m pip install -r requirements.txt
         ipython kernel install --user --name=nicobako.github.io
-    - name: Build and deploy docs
-      run: |
         sphinx-build doc/source/ doc/build/ -b html
         cd doc/build/
         touch .nojekyll
