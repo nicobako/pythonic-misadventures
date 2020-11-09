@@ -26,6 +26,8 @@ jobs:
         source .venv/bin/activate
         which python
         python -m pip install --upgrade pip
+        python -m pip install -U sphinx
+        sphinx-build --version
         python -m pip install -r requirements.txt
         ipython kernel install --user --name=nicobako.github.io
     - name: Build and deploy docs
