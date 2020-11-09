@@ -20,15 +20,19 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
-    - name: Install dependencies
+    - name: Install dependencies, build and deploy docs
       run: |
+        sudo apt-get install -y pandoc
+        python -m venv .venv
+        source .venv/bin/activate
+        which python
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Build and deploy docs
-      run: |
-        cd doc
-        make html
-        cd build/html
+        python -m pip install -U sphinx
+        sphinx-build --version
+        python -m pip install -r requirements.txt
+        ipython kernel install --user --name=nicobako.github.io
+        sphinx-build doc/source/ doc/build/ -b html
+        cd doc/build/
         touch .nojekyll
         git config --global user.email "nicobako@gmail.com"
         git config --global user.name "nicobako"
