@@ -29,9 +29,8 @@ jobs:
         ipython kernel install --user --name=nicobako.github.io
     - name: Build and deploy docs
       run: |
-        cd doc
-        make html
-        cd build/html
+        sphinx-build doc/source/ doc/build/ -b html
+        cd doc/build/
         touch .nojekyll
         git config --global user.email "nicobako@gmail.com"
         git config --global user.name "nicobako"
