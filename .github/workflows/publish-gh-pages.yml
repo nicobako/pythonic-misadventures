@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build-and-deploy:
 
     runs-on: ubuntu-latest
 
@@ -30,6 +30,10 @@ jobs:
         make html
         cd build/html
         touch .nojekyll
+    - name: Deploy docs
+      with: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
         git config --global user.email "nicobako@gmail.com"
         git config --global user.name "Nico Bakomihalis"
         git init
