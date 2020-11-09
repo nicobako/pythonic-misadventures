@@ -6,6 +6,8 @@
 Welcome to Nico Bakomihalis's documentation!
 ============================================
 
+Welcome to the main page!
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
