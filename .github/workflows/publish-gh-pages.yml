@@ -31,7 +31,7 @@ jobs:
         cd build/html
         touch .nojekyll
         git config --global user.email "nicobako@gmail.com"
-        git config --global user.name "Nico Bako"
+        git config --global user.name "nicobako"
         git init
         git add .
         git commit -m "build html pages for gh-pages branch"
