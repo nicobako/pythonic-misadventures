@@ -22,8 +22,11 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
+        python -m venv .venv
+        source .venv/bin/activate
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        ipython kernel install --user --name=nicobako.github.io
     - name: Build and deploy docs
       run: |
         cd doc
