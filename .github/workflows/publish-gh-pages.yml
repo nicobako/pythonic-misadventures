@@ -24,18 +24,16 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Build docs
+    - name: Build and deploy docs
+      with: 
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         cd doc
         make html
         cd build/html
         touch .nojekyll
-    - name: Deploy docs
-      with: 
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        git config --global user.email "nicobako@gmail.com"
-        git config --global user.name "Nico Bakomihalis"
+        git config --global user.email "${{GIT_CONFIG_EMAIL}}"
+        git config --global user.name "${{GIT_CONFIG_NAME}}"
         git init
         git add .
         git commit -m "build html pages for gh-pages branch"
