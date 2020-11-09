@@ -22,6 +22,7 @@ jobs:
         python-version: 3.8
     - name: Install dependencies, build and deploy docs
       run: |
+        sudo apt-get install -y pandoc
         python -m venv .venv
         source .venv/bin/activate
         which python
