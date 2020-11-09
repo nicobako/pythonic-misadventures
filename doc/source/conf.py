@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Nico Bakomihalis Personal Website'
+project = 'Nico Bakomihalis'
 copyright = '2020, Nico Bakomihalis'
 author = 'Nico Bakomihalis'
 
