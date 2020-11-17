@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Perfectionist Python'
+project = 'Perfectionist Python by Nico Bakomihalis'
 copyright = '2020, Nico Bakomihalis'
 author = 'Nico Bakomihalis'
 

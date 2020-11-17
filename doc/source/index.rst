@@ -1,5 +1,5 @@
-Perfectionist Python
-====================
+Perfectionist Python by Nico Bakomihalis
+========================================
 
 My name is Nico Bakomihalis.
 As a self-diagnosed perfectionist,
