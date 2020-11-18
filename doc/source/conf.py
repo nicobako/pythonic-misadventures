@@ -29,6 +29,7 @@ author = 'Nico Bakomihalis'
 # ones.
 extensions = [
     "sphinx.ext.todo",
+    "sphinx.ext.githubpages",
     "nbsphinx",
 ]
 
