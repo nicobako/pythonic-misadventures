@@ -46,6 +46,8 @@ todo_include_todos = False
 
 # -- Options for HTML output -------------------------------------------------
 
+html_last_updated_fmt = "%Y.%m.%d"
+
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
