@@ -1,12 +1,12 @@
-Perfectionist Python by Nico Bakomihalis
-========================================
+Nico Bakomihalis
+================
 
-My name is Nico Bakomihalis.
-As a self-diagnosed perfectionist,
-I often struggle with finding a balance between writing
-*perfect* code, and writing *good* code.
-This site will be all about
-writing *good Python* - whatever that means.
+Nico Bakomihalis is a software engineer with a passion for
+writing and reading wonderful Python code. Nico specializes in
+creating packages that have an intuitive API, and are fun to use.
+When not needlessly refactoring otherwise decent code,
+Nico enjoys going for hikes, rock climbing, and spending time
+with friends and family.
 
 .. note::
 
@@ -15,10 +15,15 @@ writing *good Python* - whatever that means.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Perfectionist Python Series:
 
-   about_nico_bakomihalis
-   first_notebook
+   perfectionist_python/index
+
+.. toctree::
+   :maxdepth: 2
+   :caption: More About Nico
+
+   about_nico/index
 
 Indices and tables
 ==================

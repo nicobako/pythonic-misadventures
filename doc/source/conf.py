@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Perfectionist Python by Nico Bakomihalis'
+project = 'Nico Bakomihalis'
 copyright = '2020, Nico Bakomihalis'
 author = 'Nico Bakomihalis'
 
@@ -28,7 +28,8 @@ author = 'Nico Bakomihalis'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "nbsphinx"
+    "sphinx.ext.todo",
+    "nbsphinx",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -39,6 +40,8 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+# Whether to show `todo` items
+todo_include_todos = False
 
 # -- Options for HTML output -------------------------------------------------
 
