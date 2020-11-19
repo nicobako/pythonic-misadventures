@@ -9,4 +9,4 @@ writing *good Python* - whatever that means.
 
 .. toctree::
 
-   first_notebook
+   how_to_flatten_a_python_dict
