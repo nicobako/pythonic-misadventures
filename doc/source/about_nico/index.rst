@@ -17,6 +17,11 @@ CV
 
    Make sure the CV can be downloaded as a PDF!
 
+Projects
+--------
+
+`kanbanflow  <https://nicobako.github.com/kanbanflow>`_ 
+
 Profiles
 --------
 
