@@ -9,7 +9,7 @@ About Nico Bakomihalis
 Projects
 --------
 
-`kanbanflow  <https://nicobako.github.com/kanbanflow>`_ 
+`kanbanflow <https://nicobako.github.io/kanbanflow/>`_ 
 
 CV
 --
