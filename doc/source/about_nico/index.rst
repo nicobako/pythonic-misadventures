@@ -6,6 +6,11 @@ About Nico Bakomihalis
    Add a little more about yourself here.
    Perhaps even a CV
 
+Projects
+--------
+
+* `kanbanflow <https://nicobako.github.io/kanbanflow/>`_
+
 CV
 --
 
@@ -17,10 +22,11 @@ CV
 
    Make sure the CV can be downloaded as a PDF!
 
+
 Profiles
 --------
 
-* GitHub: https://github.com/nicobako
+* `GitHub <https://github.com/nicobako>`_
 
 Contact Info
 ------------
