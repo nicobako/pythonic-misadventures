@@ -7,3 +7,6 @@ doc/build/
 # jupyter notebook folders/files
 .ipynb_checkpoints/
 debug.log
+
+# gif created by docs
+*.gif
