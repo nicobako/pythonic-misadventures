@@ -10,3 +10,5 @@ writing *good Python* - whatever that means.
 .. toctree::
 
    how_to_flatten_a_python_dict
+   xarray_computations
+   
