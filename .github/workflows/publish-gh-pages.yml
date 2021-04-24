@@ -34,7 +34,7 @@ jobs:
         which Xvfb
         Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
         sleep 3
-        jupter-book build blog
+        jupyter-book build blog
         cd blog/_build/html
         touch .nojekyll
         git config --global user.email "nicobako@gmail.com"
