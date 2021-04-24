@@ -2,7 +2,7 @@
 .venv/
 
 # documentation build directory
-doc/build/
+# blog/_build
 
 # jupyter notebook folders/files
 .ipynb_checkpoints/
