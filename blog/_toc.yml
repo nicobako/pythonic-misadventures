@@ -2,6 +2,13 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 #
 - file: intro
-- file: how_to_flatten_a_python_dict
-- file: xarray_computations
-- file: about_the_author
+
+- part: Articles
+  chapters:
+  - file: how_to_flatten_a_python_dict
+  - file: xarray_computations
+
+- part: More Information
+  chapters:
+  - file: about_the_author
+  - file: about_this_blog
