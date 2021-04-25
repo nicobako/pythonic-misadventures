@@ -26,9 +26,6 @@ jobs:
         python -m venv .venv
         source .venv/bin/activate
         which python
-        python -m pip install --upgrade pip
-        python -m pip install -U sphinx
-        sphinx-build --version
         python -m pip install -r requirements.txt
         ipython kernel install --user --name=nicobako.github.io
         # set up remote headless display for pyvista (vtk)
@@ -37,8 +34,9 @@ jobs:
         which Xvfb
         Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
         sleep 3
-        sphinx-build doc/source/ doc/build/ -b html
-        cd doc/build/
+        jupyter-book build blog
+        cd blog/_build/html
+        touch .nojekyll
         git config --global user.email "nicobako@gmail.com"
         git config --global user.name "nicobako"
         git init
