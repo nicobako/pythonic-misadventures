@@ -19,19 +19,14 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
-    - name: Install dependencies, Build and Deploy
+    - name: Install dependencies
       run: |
         sudo apt-get install -y pandoc
-        python -m pip install -r requirements.txt
+        python -m pip install --upgrade pip wheel
+        python -m pip install -r requirements-ci.txt
         ipython kernel install --user --name=nicobako.github.io
-        # set up remote headless display for pyvista (vtk)
-        sudo apt-get install -y xvfb
     - name: Build blog
       run: |
-        export DISPLAY=:99.0
-        Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-        sleep 3
-        # jblack --check blog
         jupyter-book build blog
     - name: Deploy blog
       working-directory: blog/_build/html
