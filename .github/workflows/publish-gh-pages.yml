@@ -34,8 +34,8 @@ jobs:
         Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
         sleep 3
         # jblack --check blog
-        jupyter-book build --path-output build/ blog
-        cd build/_build/html
+        jupyter-book build blog
+        cd blog/_build/html
         touch .nojekyll
         git config --global user.email "nicobako@gmail.com"
         git config --global user.name "nicobako"
