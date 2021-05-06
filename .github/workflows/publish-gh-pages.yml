@@ -19,7 +19,7 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
-    - name: Install dependencies, build and deploy docs
+    - name: Install dependencies
       run: |
         sudo apt-get install -y pandoc
         python -m venv .venv
@@ -36,11 +36,11 @@ jobs:
     - name: Check code
       run: |
         jblack --check .
-    - name: Build
+    - name: Build blog
       run: |
         jupyter-book build --path-output build/ blog
         touch build/htm/.nojekyll
-    - name: Deploy
+    - name: Deploy blog
       run: |
         cd build/_build/html
         git config --global user.email "nicobako@gmail.com"
@@ -48,5 +48,5 @@ jobs:
         git init
         git add .
         git commit -m "build html pages for gh-pages branch"
-        git remote add origin https://${{GITHUB_ACTOR}}:${{secrets.GITHUB_TOKEN}}@${{GITHUB_REPOSITORY}}
+        git remote add origin https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@$GITHUB_REPOSITORY
         git push --force origin master:gh-pages
