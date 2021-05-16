@@ -11,36 +11,31 @@ on:
 
 jobs:
   build-and-deploy:
-
+    name: Build and Deploy
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.8
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.8
-    - name: Install dependencies, build and deploy docs
+        python-version: 3.9
+    - name: Install dependencies
       run: |
         sudo apt-get install -y pandoc
-        python -m venv .venv
-        source .venv/bin/activate
-        which python
-        python -m pip install -r requirements.txt
+        python -m pip install --upgrade pip wheel
+        python -m pip install -r requirements-ci.txt
         ipython kernel install --user --name=nicobako.github.io
-        # set up remote headless display for pyvista (vtk)
-        export DISPLAY=:99.0
-        sudo apt-get install -y xvfb
-        which Xvfb
-        Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-        sleep 3
+    - name: Build blog
+      run: |
         jupyter-book build blog
-        cd blog/_build/html
+    - name: Deploy blog
+      working-directory: blog/_build/html
+      run: |
         touch .nojekyll
         git config --global user.email "nicobako@gmail.com"
         git config --global user.name "nicobako"
         git init
         git add .
         git commit -m "build html pages for gh-pages branch"
-        git remote add origin https://nicobako:${{secrets.GITHUB_TOKEN}}@github.com/nicobako/nicobako.github.io.git
+        git remote add origin https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY
         git push --force origin master:gh-pages
