@@ -5,5 +5,6 @@ matplotlib==3.3.2
 nbstripout==0.3.9
 pip-chill==1.0.1
 pydantic==1.8.1
+rich==10.2.0
 scipy==1.6.2
 xarray==0.16.2
