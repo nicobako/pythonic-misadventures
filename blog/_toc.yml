@@ -8,6 +8,7 @@
   - file: how_to_flatten_a_python_dict
   - file: xarray_computations
   - file: pydantic_autodoc
+  - file: sudoku
 
 - part: More Information
   chapters:
