@@ -1,5 +1,6 @@
 jupyter-book==0.10.2
 matplotlib==3.3.2
+networkx==2.5.1
 pydantic==1.8.1
 rich==10.2.0
 scipy==1.6.2
