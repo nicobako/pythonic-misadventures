@@ -1,4 +1,5 @@
 black-nb==0.3.0
+imageio==2.9.0
 jupyter==1.0.0
 jupyter-book==0.10.2
 matplotlib==3.3.2

@@ -5,6 +5,7 @@
 
 - part: Articles
   chapters:
+  - file: images
   - file: sudoku
   - file: xarray_computations
   - file: pydantic_autodoc
