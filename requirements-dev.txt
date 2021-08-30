@@ -1,5 +1,4 @@
 requirements-ci.txt
-black-nb==0.3.0
 jupyter==1.0.0
 nbstripout==0.3.9
 pip-chill==1.0.1
