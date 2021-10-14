@@ -3,12 +3,16 @@
 Hello, World! My name is [Nico Bakomihalis](about_the_author.md),
 and this is [my blog](about_this_blog.md).
 
+Finding a balance between writing *good* code and writing
+*perfect* code is a challenge in and of itself.
 As a self-diagnosed perfectionist,
-I often struggle with finding the right balance between writing
-*perfect* code and writing *good* code.
-Sometimes my *perfectionism* leads to awesome code...
-but usually it does not. Over the years I've learnt that perfection isn't merely elusive; perfection is impossible.
+I often struggle with this myself.
+Sometimes my *perfectionism* leads to awesome code,
+but usually it does not.
+Over the years I've learnt that *good* is better than *perfect*.
 
-The main purpose of this blog is to showcase
-some of the cool things you can do with Python
-while still striving to write *good* - not *perfect* - Python.
+My main goal, in writing this blog,
+is to *throw good code* at *interesting problems*,
+and see what sticks.
+I usually know very little about the topics I am writing about,
+but I have fun trying to figure things out one line of good code at a time.
