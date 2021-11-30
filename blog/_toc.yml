@@ -5,6 +5,7 @@
 
 - part: Articles
   chapters:
+  - file: maze
   - file: image_boundaries
   - file: images
   - file: sudoku
