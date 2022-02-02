@@ -12,6 +12,7 @@ parts:
   - file: how_to_flatten_a_python_dict
 - caption: In Progress
   chapters:
+  - file: wordle
   - file: function_dispatch
 - caption: More Information
   chapters:
