@@ -20,14 +20,16 @@
 # In progress.
 # ```
 #
-# I used to do a lot of C++, and when I switched to Python I never wanted to look back.
-# Every now and then, I encounter a situation where I miss some of C++'s features...
-# I particularly miss how easy it was to overload functions.
-# Functions can be overloaded based on the types of the arguments, even the number of arguments!
-# Wouldn't it be cool if we could do the same thing in Python?
+# Before I met Python, C++ and I were best friennds.
+# C++ has a really strong *type system* which can help make code clear and predictable.
 #
-# With a little creativity, we can get Python to do the same thing!
+# I don't really talk to C++ anymore - besides an occasional *"Hey, do you have reflection yet?"*.
+# But, every now and then, I encounter a situation where I miss some of C++'s features.
+# I particularly miss how easy it was to overload functions.
+#
+# With a little creativity, we can get Python to do even more!
 # In this article we'll create a custom and generic function dispatching infrastructure.
+# You can copy-paste this solution into your codebase and customize it as needed.
 #
 
 # %% [markdown]
@@ -93,8 +95,14 @@ signature(my_custom_func).bind(5, 3.0, "hello", 0, 1, 2, a="a", b="b")
 # %% [markdown]
 # ## Custom Dispatching Solution
 #
-# So, I will just go ahead and write the code here for our *custom function dispatching solution*,
-# and then demo it after.
+# We will inspect *static function signatures* to generate a *key*.
+# We will *register* functions one-by-one, keeping track of each function's key.
+# When functions are called at runtime, we will inspect *runtime bound arguments* to generate a *key*,
+# and look for a function whose key matches.
+# If no match is found, then the default implementation is used.
+
+# I will just go ahead and write the code here for our *custom function dispatching solution*.
+#
 
 # %%
 Key: TypeAlias = Hashable
@@ -115,7 +123,7 @@ def custom_dispatch(
         def wrapper(*args, **kwargs):
             bound_args = default_signature.bind(*args, **kwargs)
             key = runtime_dispatcher(bound_args)
-            func_impl = registry.get(key, func)
+            func_impl = registry.get(key, default_impl)
             return func_impl(*args, **kwargs)
 
         def register_decorator(func=None, *, key=None):
@@ -225,14 +233,14 @@ def predict_future(
 @predict_future.register(key="start-past")
 def _(start: date, finish: date):
     print(
-        "Predicting the past is easy! You will soon read a blog about Python function dispatching."
+        "Predicting the past is easy! You will soon read an article about Python function dispatching."
     )
 
 
 @predict_future.register(key="far-in-future")
 def _(start: date, finish: date):
     print(
-        "Predicting far into the future is also easy, robots will take over the world!"
+        "Predicting far into the future is also easy... robots will take over the world!"
     )
 
 
@@ -249,3 +257,15 @@ predict_future(start=today, finish=next_year)
 # %%
 one_week_from_today = today + timedelta(days=7)
 predict_future(start=today, finish=one_week_from_today)
+
+# %% [markdown]
+# ## Conclusion
+#
+# I hope you learnt a lot reading this article.
+# Most importantly, I hope you see that, with Python,
+# you can do just about anything! The only caveat is that you have
+# to make sure that your final solution *actually improved your code*
+# instead of *making it worse*... It's still not clear to me whether
+# custom-function-dispatching leads to better or worse code.
+# Well, I'll let you be the judge of that.
+#
