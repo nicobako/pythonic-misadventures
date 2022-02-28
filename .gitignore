@@ -5,6 +5,7 @@
 _build/
 
 # jupyter notebook folders/files
+*.ipynb
 .ipynb_checkpoints/
 debug.log
 
