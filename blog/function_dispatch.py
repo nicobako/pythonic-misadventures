@@ -75,9 +75,8 @@ x: int = 5
 # When we define a function, we can inspect *static properties* of the function via its *function signature*.
 
 # %%
-def my_custom_func(x: int, y: float, z: str, *args, **kwargs):
+def my_custom_func(x:int, y:float, z:str, *args, **kwargs):
     pass
-
 
 signature(my_custom_func)
 
@@ -121,11 +120,12 @@ def custom_dispatch(
         def register_decorator(func=None, *, key=None):
             if func is None:
                 return partial(register_decorator, key=key)
-
+            
             func_sig = signature(func)
             key = key or static_dispatcher(func_sig)
             registry[key] = func
             return func
+                
 
         wrapper.register = register_decorator
         return wrapper
@@ -155,27 +155,25 @@ dispatch = custom_dispatch(
 
 
 @dispatch
-def f(x: Any, y: Any):
+def f(x: Any, y:Any):
     print("default implementation", x, y)
 
 
 @f.register
-def _(x: int, y: int):
+def _(x: int, y:int):
     print("int implementation", x, y)
 
-
 @f.register
-def _(x: float, y: int):
+def _(x:float, y:int):
     print("float-int implementation")
 
-
 @f.register
-def _(x: str, y: str):
+def _(x: str, y:str):
     print("str-str implementation", x)
 
 
 # %%
-f(1, 1)
+f(1,1)
 
 # %%
 f(5.0, 0)
@@ -189,51 +187,45 @@ f("hello", "goodbye")
 # %%
 from datetime import date, timedelta
 
-
-def prediction_static_dispatcher(signature: Signature):
+def prediction_static_dispatcher(
+    signature: Signature
+):
     raise ValueError("No static dispatching possible.")
-
-
+    
 def prediction_runtime_dispatcher(
     bound_arguments: BoundArguments,
 ):
     start = bound_arguments.arguments["start"]
     finish = bound_arguments.arguments["finish"]
-
+    
     today = date.today()
     if start < today:
         return "start-past"
     if timedelta(days=30) < finish - today:
         return "far-in-future"
-
-
+    
 prediction_dispatcher = custom_dispatch(
     static_dispatcher=prediction_static_dispatcher,
     runtime_dispatcher=prediction_runtime_dispatcher,
 )
 
-
 @prediction_dispatcher
-def predict_future(
-    start: date,
-    finish: date,
-):
+def predict_future(start:date, finish: date,):
     """Base function for predicting the future"""
     print(f"You will do great things with Python! from {start} to {finish}!")
-
-
-@predict_future.register(key="start-past")
-def _(start: date, finish: date):
-    print(
-        "Predicting the past is easy! You will soon read a blog about Python function dispatching."
-    )
-
-
-@predict_future.register(key="far-in-future")
-def _(start: date, finish: date):
-    print(
-        "Predicting far into the future is also easy, robots will take over the world!"
-    )
+    
+@predict_future.register(
+    key="start-past"
+)
+def _(start:date, finish: date):
+    print("Predicting the past is easy! You will soon read a blog about Python function dispatching.")
+    
+@predict_future.register(
+    key="far-in-future"
+)
+def _(start:date, finish:date):
+    print("Predicting far into the future is also easy, robots will take over the world!")
+    
 
 
 # %%
