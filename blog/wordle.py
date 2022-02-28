@@ -42,11 +42,7 @@ def plot_table(df: pd.DataFrame):
 
 
 words_request = requests.get(
-    "".join(
-        "https://gist.githubusercontent.com/nicobako",
-        "/759adb8f0e7fa514f408afb946e80042/raw/",
-        "d9783627c731268fb2935a731a618aa8e95cf465/words",
-    )
+    "https://gist.githubusercontent.com/nicobako/759adb8f0e7fa514f408afb946e80042/raw/d9783627c731268fb2935a731a618aa8e95cf465/words"
 )
 all_words = words_request.content.decode("utf-8").lower().split()
 
