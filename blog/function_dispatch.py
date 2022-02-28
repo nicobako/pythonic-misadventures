@@ -20,14 +20,18 @@
 # In progress.
 # ```
 #
-# Before I met Python, C++ and I were best friennds.
-# C++ has a really strong *type system* which can help make code clear and predictable.
+# C++ and I used to be best friends.
+# C++ has a really strong *type system* which made it reliable and predictable.
+# Then, I met Python, and everything changed.
+# It was so easy to talk to Python, and it felt like Python *just understood* what
+# I was trying to say.
 #
-# I don't really talk to C++ anymore - besides an occasional *"Hey, do you have reflection yet?"*.
+# I don't really talk to C++ anymore...
 # But, every now and then, I encounter a situation where I miss some of C++'s features.
 # I particularly miss how easy it was to overload functions.
 #
-# With a little creativity, we can get Python to do even more!
+# I really wanted this feature, so I set out trying to implement it myself.
+# It took me a while to figure it out, but I think this is a decent solution!
 # In this article we'll create a custom and generic function dispatching infrastructure.
 # You can copy-paste this solution into your codebase and customize it as needed.
 #
@@ -263,9 +267,11 @@ predict_future(start=today, finish=one_week_from_today)
 #
 # I hope you learnt a lot reading this article.
 # Most importantly, I hope you see that, with Python,
-# you can do just about anything! The only caveat is that you have
-# to make sure that your final solution *actually improved your code*
+# you can do just about anything!
+#
+# The only caveat is that it's up to you
+# to make sure that your final solution *improved your code*
 # instead of *making it worse*... It's still not clear to me whether
 # custom-function-dispatching leads to better or worse code.
-# Well, I'll let you be the judge of that.
+# I'll let you be the judge of that.
 #
