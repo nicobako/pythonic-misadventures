@@ -27,7 +27,7 @@ jobs:
         ipython kernel install --user --name=nicobako.github.io
     - name: Check code quality
       run: |
-        black-nb --check blog/*.ipynb
+        # black-nb --check blog/*.ipynb
     - name: Build blog
       run: |
         jupyter-book build blog
