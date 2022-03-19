@@ -20,20 +20,17 @@
 # In progress.
 # ```
 #
-# C++ and I used to be best friends.
-# C++ has a really strong *type system* which made it reliable and predictable.
-# Then, I met Python, and everything changed.
-# It was so easy to talk to Python, and it felt like Python *just understood* what
-# I was trying to say.
+# I used to do a lot of C++ programming,
+# I really love its strong typing system, and
+# how easy it is to overload functions.
 #
-# I don't really talk to C++ anymore...
-# But, every now and then, I encounter a situation where I miss some of C++'s features.
-# I particularly miss how easy it was to overload functions.
+# There are some existing solutions in Python for overloading functions,
+# but I always felt they were missing something.
+# Just like any determined *Pythonista*, I set out on an adventure to implement a solution myself!
 #
-# I really wanted this feature, so I set out trying to implement it myself.
 # It took me a while to figure it out, but I think this is a decent solution!
 # In this article we'll create a custom and generic function dispatching infrastructure.
-# You can copy-paste this solution into your codebase and customize it as needed.
+# If you like it, feel free to copy-paste this solution into your codebase and customize it as needed.
 #
 
 # %% [markdown]
@@ -261,6 +258,7 @@ predict_future(start=today, finish=next_year)
 # %%
 one_week_from_today = today + timedelta(days=7)
 predict_future(start=today, finish=one_week_from_today)
+
 
 # %% [markdown]
 # ## Conclusion
