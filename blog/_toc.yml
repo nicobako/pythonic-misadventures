@@ -1,10 +1,10 @@
-# Table of content
-# Learn more at https://jupyterbook.org/customize/toc.html
-#
-- file: intro
-
-- part: Articles
+format: jb-book
+root: intro
+parts:
+- caption: Articles
   chapters:
+  - file: function_dispatch
+  - file: wordle
   - file: maze
   - file: image_boundaries
   - file: images
@@ -12,8 +12,7 @@
   - file: xarray_computations
   - file: pydantic_autodoc
   - file: how_to_flatten_a_python_dict
-
-- part: More Information
+- caption: More Information
   chapters:
   - file: about_the_author
   - file: about_this_blog

@@ -18,7 +18,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.9
+        python-version: "3.10"
     - name: Install dependencies
       run: |
         sudo apt-get install -y pandoc
@@ -27,9 +27,10 @@ jobs:
         ipython kernel install --user --name=nicobako.github.io
     - name: Check code quality
       run: |
-        black-nb --check blog/*.ipynb
+        black --check blog/
     - name: Build blog
       run: |
+        jupytext --to notebook blog/*.py
         jupyter-book build blog
     - name: Deploy blog
       working-directory: blog/_build/html
