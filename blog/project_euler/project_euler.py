@@ -10,7 +10,11 @@ def check(problem_number: int, answer: Any) -> bool:
         },
     )
 
+def get_problem_description(problem:int):
+    from IPython.display import HTML
+    return HTML(
+        requests.get(
+            f"https://projecteuler.net/minimal={problem}"
+        ).content.decode("utf-8")
+    )
 
-print(check(1, 5))
-
-print(check(1, 233168))
