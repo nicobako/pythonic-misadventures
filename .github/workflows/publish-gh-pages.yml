@@ -30,7 +30,6 @@ jobs:
         black --check blog/
     - name: Build blog
       run: |
-        jupytext --to notebook blog/*.py
         jupyter-book build blog
     - name: Deploy blog
       working-directory: blog/_build/html

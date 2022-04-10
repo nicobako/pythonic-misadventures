@@ -1,4 +1,4 @@
-black-nb==0.6
+black==22.3.0
 jupyter-book==0.12.1
 matplotlib==3.5.1
 networkx==2.6.3
