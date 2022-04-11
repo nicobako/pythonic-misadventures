@@ -18,7 +18,7 @@
 # %%
 from project_euler import get_problem_description
 
-get_problem_description(2)
+get_problem_description(1)
 
 # %% [markdown]
 # This problem is perhaps the simplest on project euler.
