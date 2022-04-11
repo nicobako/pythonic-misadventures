@@ -13,7 +13,7 @@
 # ---
 
 # %% [markdown]
-# # Problem 1: Multiples of 3 or 5
+# # Problem 1
 
 # %%
 from project_euler import get_problem_description
