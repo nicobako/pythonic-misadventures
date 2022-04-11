@@ -17,10 +17,12 @@
 
 # %%
 import requests
+
 r = requests.get("https://projecteuler.net/minimal=1")
 
 # %%
 from project_euler import get_problem_description
+
 get_problem_description(2)
 
 # %% [markdown]
@@ -38,6 +40,7 @@ def fibonacci():
         yield next_term
         first_term = second_term
         second_term = next_term
+
 
 # %% [markdown]
 # Let's try it out.

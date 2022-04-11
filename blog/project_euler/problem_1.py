@@ -17,6 +17,7 @@
 
 # %%
 from project_euler import get_problem_description
+
 get_problem_description(2)
 
 # %% [markdown]
