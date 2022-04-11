@@ -57,6 +57,8 @@ list(filter(is_prime_number, range(50)))
 
 # %% [markdown]
 # Now, we need a function for getting the factors of a number
+
+# %%
 def get_factors(number: int) -> Iterable[int]:
     factors = set([1, number])
     low_num = 2
@@ -97,7 +99,7 @@ assert [5, 7, 13, 29] == list(filter(is_prime_number, get_factors(13195)))
 # Okay, now the real test...
 
 # %%
-print(max(filter(is_prime_number, get_factors(600851475143))))
+max(filter(is_prime_number, get_factors(600851475143)))
 
 # %% [markdown]
 # Yay! Solution is correct!
