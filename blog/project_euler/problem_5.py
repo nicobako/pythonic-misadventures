@@ -70,6 +70,8 @@ reduce(multiply, filter(is_prime, range(1, 11)))
 
 # %% [markdown]
 # Let's do a brute force solution to get a better idea of what's going on.
+
+# %%
 def brute_force_solution(number_range):
     n = 1
     while True:

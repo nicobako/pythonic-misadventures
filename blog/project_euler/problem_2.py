@@ -16,11 +16,6 @@
 # # Problem 2
 
 # %%
-import requests
-
-r = requests.get("https://projecteuler.net/minimal=1")
-
-# %%
 from project_euler import get_problem_description
 
 get_problem_description(2)

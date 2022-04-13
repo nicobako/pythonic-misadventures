@@ -22,8 +22,7 @@ get_problem_description(1)
 
 # %% [markdown]
 # This problem is perhaps the simplest on project euler.
-# First, let's devise a method for determining if a number is a multiple of both
-# other numbers
+# First, let's devise a method for determining if a number is a multiple of another number.
 
 # %%
 from typing import Iterable, List
@@ -36,7 +35,7 @@ def is_multiple_of(
     return number % multiple == 0
 
 
-# %%
+# %% [markdown]
 # Let's see this function in action.
 
 # %%
