@@ -17,6 +17,7 @@
 
 # %%
 from math import prod
+
 from project_euler import get_problem_description
 
 get_problem_description(4)

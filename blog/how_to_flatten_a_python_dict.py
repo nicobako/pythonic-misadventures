@@ -109,7 +109,7 @@ roster_flattened_expected
 # I'll define it here, and explain parts of it later.
 
 # %%
-from typing import Dict, List, Union, Tuple, Any
+from typing import Any, Dict, List, Tuple, Union
 
 JsonObject = Union[Dict, List]
 
@@ -241,9 +241,9 @@ honolulu_bus_routes_df
 # For example, imagine if we just wanted to get all of the files
 # residing in a specific folder:
 
+from pathlib import Path
 # %%
 from typing import List
-from pathlib import Path
 
 
 def flatten_path(*, path: Path) -> List[Path]:

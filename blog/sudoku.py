@@ -84,9 +84,10 @@
 
 # %%
 import itertools
-import networkx as nx
+from typing import Callable, Dict, List, Union
+
 import matplotlib.pyplot as plt
-from typing import List, Dict, Union, Callable
+import networkx as nx
 
 Sudoku = nx.MultiGraph
 

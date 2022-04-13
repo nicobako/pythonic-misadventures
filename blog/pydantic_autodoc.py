@@ -79,9 +79,10 @@
 # There are many ways to solve this problem, but this *template* will
 # serve as our starting point.
 
+from typing import Type
+
 # %%
 import pydantic as pd
-from typing import Type
 
 
 def generate_docs(cls: Type[pd.BaseModel]) -> str:
@@ -116,9 +117,10 @@ print(Person.__doc__)
 #
 # Let's go a little crazy and do some more interesting stuff!
 
+from typing import Type
+
 # %%
 import pydantic as pd
-from typing import Type
 
 
 class AutoDocBase(pd.BaseModel):

@@ -42,11 +42,11 @@
 # reach a satisfactory solution.
 # First, let's load our image using *matplotlib* facilities.
 
+import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+import networkx as nx
 # %%
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-import networkx as nx
 
 # %%
 img_url = "https://github.com/scikit-image/scikit-image/blob/main/skimage/data/astronaut.png?raw=true"

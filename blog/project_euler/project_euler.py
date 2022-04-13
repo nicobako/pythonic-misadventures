@@ -1,5 +1,6 @@
-import requests
 from typing import Any
+
+import requests
 
 
 def check(problem_number: int, answer: Any) -> bool:
