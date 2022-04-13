@@ -59,6 +59,7 @@
 # In order for function dispatching to work we need to be able to look at the values *at runtime* and match them to an appropriate *statically defined function*. I'm using the terms *runtime* and *static* intentionally here, since they play a critical role in how this works.
 
 from functools import partial, wraps
+
 # %%
 from inspect import BoundArguments, Signature, signature
 from typing import Any, Callable, Hashable, Type, TypeAlias

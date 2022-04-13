@@ -19,6 +19,7 @@
 # using graph-processing techniques to solve interesting problems.
 
 from itertools import product
+
 # %%
 from pathlib import Path
 
