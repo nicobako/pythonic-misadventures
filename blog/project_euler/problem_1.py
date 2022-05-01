@@ -15,9 +15,10 @@
 # %% [markdown]
 # # Problem 1
 
-from typing import Iterable
 
 # %%
+from typing import Iterable
+
 from project_euler import get_problem_description
 
 get_problem_description(1)
