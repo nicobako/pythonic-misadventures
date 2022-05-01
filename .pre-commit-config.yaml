@@ -1,6 +1,10 @@
 repos:
--   repo: https://github.com/psf/black
-    rev: 9b161072c13c0ec32c9ca9bd48fad17f781a56d4
-    hooks:
-    - id: black
-      language_version: "python3.10"
+- repo: https://github.com/pycqa/isort
+  rev: "5.10.1"
+  hooks:
+  - id: isort
+- repo: https://github.com/psf/black
+  rev: 9b161072c13c0ec32c9ca9bd48fad17f781a56d4
+  hooks:
+  - id: black
+    language_version: "python3.10"
