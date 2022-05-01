@@ -54,10 +54,10 @@
 # Imagine a classroom with students. If I wanted to store the *roster*
 # in a `dict` it could look like this:
 
+# %%
 from pathlib import Path
 from typing import Any, Dict, List, Tuple, Union
 
-# %%
 import pandas as pd
 import requests
 
