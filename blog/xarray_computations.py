@@ -52,7 +52,6 @@ import io
 from pathlib import Path
 
 import matplotlib.pyplot as plt
-
 import numpy as np
 import xarray as xr
 from IPython.display import Image, Math
