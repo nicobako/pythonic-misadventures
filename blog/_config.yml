@@ -38,3 +38,4 @@ sphinx:
         .py:
             - jupytext.reads
             - fmt: py:percent
+    exclude_patterns: ["project_euler/project_euler.py"]
