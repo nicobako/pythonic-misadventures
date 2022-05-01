@@ -15,7 +15,11 @@
 # %% [markdown]
 # # Problem 5
 
+
 # %%
+from functools import reduce
+from typing import Iterable
+
 from project_euler import get_problem_description
 
 get_problem_description(5)
@@ -56,7 +60,6 @@ list(filter(is_prime, range(1, 11)))
 # Now let's see if our hypothesis is correct?
 
 # %%
-from functools import reduce
 
 
 def multiply(num1, num2):
@@ -102,7 +105,6 @@ brute_force_solution(range(1, 11))
 #   4. Repeat until product cannot be simplified
 
 # %%
-from typing import Iterable
 
 
 def is_divisible(num: int, divisor: int) -> bool:

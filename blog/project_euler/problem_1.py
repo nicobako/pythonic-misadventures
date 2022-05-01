@@ -15,6 +15,8 @@
 # %% [markdown]
 # # Problem 1
 
+from typing import Iterable
+
 # %%
 from project_euler import get_problem_description
 
@@ -25,9 +27,6 @@ get_problem_description(1)
 # First, let's devise a method for determining if a number is a multiple of another number.
 
 # %%
-from typing import Iterable, List
-
-
 def is_multiple_of(
     multiple: int,
     number: int,
@@ -48,7 +47,6 @@ assert not is_multiple_of(2, 5)
 # Now, we should check our function with the simple question answer provided above.
 
 # %%
-from typing import Iterable
 
 
 def is_multiple_of_3_or_5(number: int) -> bool:

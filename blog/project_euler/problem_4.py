@@ -16,7 +16,8 @@
 # # Problem 4
 
 # %%
-from math import prod
+from itertools import product
+from typing import Tuple
 
 from project_euler import get_problem_description
 
@@ -43,8 +44,6 @@ assert not is_palindrome(123)
 # Now let's try and solve the problem.
 
 # %%
-from itertools import product
-from typing import Tuple
 
 
 def product_if_palindrome(numbers: Tuple[int, int]) -> int:

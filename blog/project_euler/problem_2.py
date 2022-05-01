@@ -26,6 +26,7 @@ get_problem_description(2)
 
 # %%
 def fibonacci():
+
     first_term = 1
     yield first_term
     second_term = 2

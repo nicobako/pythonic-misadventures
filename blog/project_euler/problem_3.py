@@ -16,7 +16,6 @@
 # # Problem 3
 
 # %%
-from math import remainder
 from typing import Iterable
 
 from project_euler import get_problem_description
