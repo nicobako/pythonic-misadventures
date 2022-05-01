@@ -79,11 +79,10 @@
 # There are many ways to solve this problem, but this *template* will
 # serve as our starting point.
 
+# %%
 from typing import Type
 
 import pydantic as pd
-
-# %%
 from rich.markdown import Markdown
 
 
