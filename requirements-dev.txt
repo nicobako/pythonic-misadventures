@@ -2,3 +2,4 @@
 jupyter==1.0.0
 pip-chill==1.0.1
 pre-commit==2.18.1
+isort==5.10.1
