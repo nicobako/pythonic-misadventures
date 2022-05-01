@@ -47,12 +47,12 @@
 # To model the projectile's path we'll have to model some *accelerometer* data
 # that informs us of the projectile's *x- y- and z-acceleration* over time.
 
+# %%
 import io
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 
-# %%
 import numpy as np
 import xarray as xr
 from IPython.display import Image, Math
