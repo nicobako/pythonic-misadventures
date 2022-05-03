@@ -58,10 +58,12 @@
 #
 # In order for function dispatching to work we need to be able to look at the values *at runtime* and match them to an appropriate *statically defined function*. I'm using the terms *runtime* and *static* intentionally here, since they play a critical role in how this works.
 
+
 # %%
-from inspect import signature, Signature, BoundArguments
-from typing import Callable, Hashable, Type, Any, TypeAlias
-from functools import wraps, partial
+from datetime import date, timedelta
+from functools import partial, wraps
+from inspect import BoundArguments, Signature, signature
+from typing import Any, Callable, Hashable, Type, TypeAlias
 
 # %% [markdown]
 # ### Static vs Runtime
@@ -196,7 +198,6 @@ f("hello", "goodbye")
 # ## Dispatch Based on Values
 
 # %%
-from datetime import date, timedelta
 
 
 def prediction_static_dispatcher(signature: Signature):

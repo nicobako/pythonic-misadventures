@@ -18,14 +18,13 @@
 # Solving mazes seems like a really good opportunity to continue exploring
 # using graph-processing techniques to solve interesting problems.
 
+
 # %%
 from pathlib import Path
-from itertools import product
 
-import numpy as np
-import networkx as nx
-import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+import networkx as nx
 
 # %% [markdown]
 # ## Generating Mazes

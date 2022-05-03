@@ -80,8 +80,10 @@
 # serve as our starting point.
 
 # %%
-import pydantic as pd
 from typing import Type
+
+import pydantic as pd
+from rich.markdown import Markdown
 
 
 def generate_docs(cls: Type[pd.BaseModel]) -> str:
@@ -116,18 +118,15 @@ print(Person.__doc__)
 #
 # Let's go a little crazy and do some more interesting stuff!
 
+
 # %%
-import pydantic as pd
-from typing import Type
-
-
 class AutoDocBase(pd.BaseModel):
     class Doc:
         short_description: str
         long_description: str
 
 
-def generate_docs(cls: Type[AutoDocBase]) -> str:
+def generate_docs_markdown(cls: Type[AutoDocBase]) -> str:
     doc = ""
     doc += f"# {cls.__name__}\n\n"
     doc += f"{cls.Doc.short_description}\n\n"
@@ -147,7 +146,7 @@ def generate_docs(cls: Type[AutoDocBase]) -> str:
 
 class BaseModel(AutoDocBase):
     def __init_subclass__(cls: Type[AutoDocBase]) -> None:
-        cls.__doc__ = generate_docs(cls)
+        cls.__doc__ = generate_docs_markdown(cls)
 
 
 class Person(BaseModel):
@@ -164,7 +163,6 @@ class Person(BaseModel):
 print(Person.__doc__)
 
 # %%
-from rich.markdown import Markdown
 
 Markdown(Person.__doc__)
 

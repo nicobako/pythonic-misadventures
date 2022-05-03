@@ -48,12 +48,10 @@
 # that informs us of the projectile's *x- y- and z-acceleration* over time.
 
 # %%
+import matplotlib.pyplot as plt
 import numpy as np
 import xarray as xr
-import matplotlib.pyplot as plt
-from IPython.display import Math, Image
-import io
-from pathlib import Path
+from IPython.display import Math
 
 
 def gen_linspace_values(start, stop, n):

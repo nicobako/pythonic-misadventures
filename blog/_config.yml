@@ -30,3 +30,12 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+# Use jupytext to parse py:percent scripts
+sphinx:
+  config:
+    nb_custom_formats:
+        .py:
+            - jupytext.reads
+            - fmt: py:percent
+    exclude_patterns: ["project_euler/project_euler.py"]

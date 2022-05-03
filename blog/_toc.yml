@@ -12,6 +12,14 @@ parts:
   - file: xarray_computations
   - file: pydantic_autodoc
   - file: how_to_flatten_a_python_dict
+- caption: Project Euler
+  chapters:
+  - file: project_euler/index
+  - file: project_euler/problem_1
+  - file: project_euler/problem_2
+  - file: project_euler/problem_3
+  - file: project_euler/problem_4
+  - file: project_euler/problem_5
 - caption: More Information
   chapters:
   - file: about_the_author

@@ -84,9 +84,9 @@
 
 # %%
 import itertools
-import networkx as nx
+
 import matplotlib.pyplot as plt
-from typing import List, Dict, Union, Callable
+import networkx as nx
 
 Sudoku = nx.MultiGraph
 
@@ -152,9 +152,9 @@ def plot_sudoku(sudoku) -> None:
     low = -0.5
     high = 8.5
     lines = [low, 2.5, 5.5, high]
-    for l in lines:
-        plt.plot([l, l], [low, high], color="g")
-        plt.plot([low, high], [l, l], color="g")
+    for line in lines:
+        plt.plot([line, line], [low, high], color="g")
+        plt.plot([low, high], [line, line], color="g")
     plt.show()
 
 
@@ -176,7 +176,7 @@ def get_connection_sudoku_map(sudoku: Sudoku) -> dict[str, nx.Graph]:
     all_nodes = list(sudoku.nodes(data=True))
     all_edges = [(u, v, c) for (u, v, c) in sudoku.edges(data="connection")]
 
-    sudoku_connections: SudokuConnections = {}
+    sudoku_connections = {}
 
     for conn in sudoku.graph["connections"]:
         sc = nx.Graph()
@@ -244,7 +244,6 @@ plot_sudoku(sudoku.subgraph(first_box_nodes))
 
 # %%
 def plot_sudoku_connection_neighbors(sudoku, node):
-    sudoku_connection = get_connection_sudoku_map(sudoku)
     sudoku_connections_neighbors = {}
     for conn, sc in sudoku_connections.items():
         neighbors = sc.neighbors(node)

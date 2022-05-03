@@ -55,6 +55,13 @@
 # in a `dict` it could look like this:
 
 # %%
+from pathlib import Path
+from typing import Any, Dict, List, Tuple, Union
+
+import pandas as pd
+import requests
+
+# %%
 roster = {
     "students": [
         {
@@ -76,8 +83,6 @@ roster = {
 # Here are the *paths* and *values* I want, stored in a `pandas.DataFrame`
 # because `pandas` rocks!
 
-# %%
-import pandas as pd
 
 # %%
 roster_flattened_expected = pd.DataFrame(
@@ -109,12 +114,9 @@ roster_flattened_expected
 # I'll define it here, and explain parts of it later.
 
 # %%
-from typing import Dict, List, Union, Tuple, Any
 
 JsonObject = Union[Dict, List]
-
-Path = str
-Paths = List[Path]
+Paths = List[str]
 
 Value = Any
 Values = List[Value]
@@ -215,8 +217,6 @@ assert roster_flattened.equals(roster_flattened_expected)
 # and see if it works...
 
 # %%
-import requests
-
 honolulu_bus_routes = requests.get(
     url="https://data.honolulu.gov/api/views/s5c7-gtgi/rows.json?accessType=DOWNLOAD"
 ).json()
@@ -242,8 +242,6 @@ honolulu_bus_routes_df
 # residing in a specific folder:
 
 # %%
-from typing import List
-from pathlib import Path
 
 
 def flatten_path(*, path: Path) -> List[Path]:

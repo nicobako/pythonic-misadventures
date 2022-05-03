@@ -32,8 +32,9 @@
 
 # %%
 import string
-import pandas as pd
+
 import matplotlib.pyplot as plt
+import pandas as pd
 import requests
 
 
@@ -50,7 +51,7 @@ five_letter_words = pd.DataFrame(
     (
         word
         for word in all_words
-        if len(word) == 5 and all(l in string.ascii_lowercase for l in word)
+        if len(word) == 5 and all(letter in string.ascii_lowercase for letter in word)
     ),
     columns=["word"],
 )
