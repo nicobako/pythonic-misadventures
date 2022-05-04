@@ -50,7 +50,7 @@ import numpy as np
 import pandas as pd
 
 # %% [markdown]
-# ## Lessons Learnt
+# ## Lessons Learned
 #
 # Writing *good documentation* is about a lot more than just *writing*.
 # How do you ensure that your documentation is *correct*, *up-to-date*,
