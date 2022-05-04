@@ -13,31 +13,35 @@
 # ---
 
 # %% [markdown]
-# # On Writing Good Documentation
-#
-# People write blogs for all sorts of reasons.
-# This article is about *why I write this blog*.
-#
-# ## Documentation - the Common Denominator
+# # On Good Documentation
 #
 # No matter what your role, whether you're a manager,
 # or you're fresh-out-of-college, chances are you need to write some documentation.
 #
-# I too found myself in this situation.
-# I was eager to work on *cool projects* and implementing *new features*,
-# but the thought of *writing documentation* sounded like a bore.
-# It took me a while to realize just how important writing *good documentation* is,
-# and how much fun it can actually be.
+# We need to write documentation for all sorts of reasons.
+# Sometimes we need to document our progress on a task, or the steps of a process,
+# or how-to use a tool.
+#
+# Sometimes our documentation is in the form of a word document,
+# presentation slides, a formal report, or a simple `README.txt`.
+#
+# Most of the time, however, we don't enjoy writing documentation...
+# we see it as a means to an end.
+# The thought of *writing documentation* sounded like a bore.
+#
+# It took me a while to realize just how important writing documentation is,
+# and that, when we set up our *documentation infrastructure* properly,
+# we can *actually have fun writing good documentation*!
+#
+# ## Blogging is a Form of Documentation
 #
 # I first began writing this blog with the intention of learning
 # important skills for creating *professional-level* documentation.
-# By *professional* I mean documentation you would feel
-# proud turning in to your boss.
 #
 # But, before I ever wrote any *decent* documentation,
 # I wrote **a lot** of **bad** documentation.
+# I learned a lot along the way.
 
-# %% [markdown]
 # ## Common Characteristic of **Bad** Documentation
 #
 # My first attempts at writing documentation usually ended disastrously.
@@ -75,29 +79,37 @@ import numpy as np
 import pandas as pd
 
 # %% [markdown]
-# ## Characteristics of **Good** Documentation
+# ## Lessons Learnt
 #
-# Writing *good* documentation is about a lot more than just *writing*.
-# It's also about having a solid continuous integration pipeline,
-# complete with quality-assurance, testing, building, and deployment.
+# Writing *good documentation* is about a lot more than just *writing*.
+# How do you ensure that your documentation is *correct*, *up-to-date*,
+# of *high-quality*, and, most importantly, *looks good*?
 #
-# All of this infrastructure is importanti in having *good* documentation,
-# *Good* documentation has the following characteristics.
+# I've learnt that having a solid continuous integration pipeline,
+# complete with quality-assurance, testing, building, and deployment,
+# is essential to having high-quality documentation.
 
 # %% [markdown]
-# ### Stays Up-to-date
+# ### Staying Up-to-date
 #
-# In order to keep documentation stay *up-to-date* the documentation must be *executable*.
-# This usually means **no screenshots**, **no copy-pasting**, and nothing that can become *out-of-date*.
+# Technology moves so quickly that documentation goes out-of-date faster than we can write it.
+# So, how do we ensure that it is always *up-to-date*?
 #
-# ```{note}
-# Screenshots are warranted if they will never become *out-of-date*.
-# ```
+# In order to keep documentation stay *up-to-date* it must be *executable*.
+# This means that any images/plots in the documentation are freshly generated.
 #
-# If data needs to be used to generate a plot, then that's exactly what happens:
-# data is fetched and a plot is generated.
-# For example, imagine I want to get sales data
+# This is made possible by such wonderful tools as [Jupyter notebooks](https://jupyter.org/),
+# which allow us to mix *code* and *text* into one *executable document*.
+#
+# Initially, I used Jupyter notebooks for this blog, and still
+# consider it a solid choice. I currently use [the percent py format](https://jupytext.readthedocs.io/en/latest/formats.html#the-percent-format)
+# for reasons I'll elaborate on later.
+
+# A common use case would be wanting to add a plot to my documentation.
+# Imagine I want to get sales data
 # for the last *n* number of days.
+# Instead of *copy-pasting* an image of a plot
+# created elsewhere, I just make the plot right here:
 
 # %%
 def get_sales_data(*, last_n_days: int):
@@ -107,78 +119,60 @@ def get_sales_data(*, last_n_days: int):
     is probably in a database of some kind.
     """
     today = date.today()
-    days = [today - timedelta(days=i) for i in range(last_n_days)]
-    days = list(reversed(days))
-    sales = [(i / 2) * np.random.uniform(low=10, high=20) for i in range(len(days))]
+    days = sorted([today - timedelta(days=i) for i in range(last_n_days)])
+    sales = [np.random.uniform(low=1000, high=2000) for i in range(len(days))]
 
     df = pd.DataFrame({"date": days, "sales": sales})
     df.set_index("date")
     return df
 
 
-df = get_sales_data(last_n_days=100)
-
-
 def plot_sales(*, df: pd.DataFrame) -> None:
     """Plot sales data."""
-    df.plot(x="date", y="sales", rot=90, xlabel="Date", ylabel="Sales [$]")
+    df.plot(x="date", y="sales", rot=45, xlabel="Date", ylabel="Sales [$]")
     plt.show()
 
+
+df = get_sales_data(last_n_days=100)
 
 plot_sales(df=df)
 
 # %% [markdown]
-# There's another important thing to mention here:
-# if our documentation has any type of *requirements* or *pre-conditions*,
-# then we should express those in our code.
-#
-# For example, if our documentation needs to talk to a database
-# to get information, then our documentation should fail **LOUDLY**
-# if a connection to the database cannot be established.
-
-# %%
-def test_db_connection():
-    """Test that database can be connected to."""
-    print("Testing database connection.")
-    assert True
-
-
-# %% [markdown]
-# You might be thinking, "That kind of stuff doesn't belong in the documentation".
-# Well, [just hide it!](https://jupyterbook.org/en/stable/interactive/hiding.html)
-# Below is a code-cell calling our database-testing function,
-# but the cell itself is hidden. You only see the output.
-
-# %% tags=["remove-input"]
-test_db_connection()
-
-# %% [markdown]
-# As this blog has grown I've learnt to put
-# more of these types of *checks* throughout
-# the code. These checks help ensure things are
-# working correctly.
-
-# %% [markdown]
 # ### Is Easily Updated
 #
-# Once an issue is found, can I easily find its cause and fix it?
+# No matter how hard you try, there will always be a *bug* or *issue*
+# that will need to be fixed.
+# The question is: how easily can I find and fix bugs in the documentation?
 #
-# For example, imagine that my *sales* were off by a factor of 2!
+# For example, imagine that my *sales* from the previous example were off by a factor of 2!
 # In the database the sales are stored in "cents", and I thought it was "dollars".
-
+# Since the plot is generated right here, this is really easy to fix:
 # %%
 # Convert sales from cents to dollars
 df["sales"] *= 0.01
 plot_sales(df=df)
 
 # %% [markdown]
-# There's more to *easily updating*
-# than just fixing code... it must be easy
-# to distribute/deploy the fixed changes.
+# One reason I switched from using Jupyter notebooks to using percent-format
+# Python scripts was precisely because Python scripts (which are plain text files)
+# are much easier to modify and fix than Jupyter notebooks (which are JSON files).
+#
+# There's also more to *easily updating* than just fixing code.
+# You must distribute the fixed changes to your audience.
+# How do you ensure your readers get the latest documentation?
+#
 # For that, having a continuous integration system
-# which automagically deploys the documentation is helpful.
-
+# which automagically deploys the documentation is essential.
+# This blog uses
+# [GitHub Actions](https://docs.github.com/en/actions)
+# [GitHub Pages](https://pages.github.com/) for hosting
+# to automate the testing, building, and deployment of this blog.
+#
 # ### Easy to Reproduce
+#
+# Reproducibility is one of the foundational concepts of the *scientific method*.
+# It is an essential part of *peer reviewed research*.
+# If your results can't be reproduced, then there is a **real problem**.
 #
 # The documentation should be able to be generated from the command-line,
 # and setting up an environment to generate the documentation should be fully automated.
@@ -193,37 +187,31 @@ plot_sales(df=df)
 # All documentation will have some issues and/or inaccuracies.
 # It should be as easy as possible for avid users to be able to suggest improvements.
 #
-# This blog is built using [Jupyter Book](https://jupyterbook.org),
-# which provides the wonderful functionality of linking each documentation
-# page directly to a Git Repository. On the top right of the page
-# you will see links to the Git Repository, as well as links for creating
-# an *Issue*,
+# This blog used to be built using [Sphinx](https://www.sphinx-doc.org/en/master/),
+# which is a solid tool,
+# but I now use [Jupyter Book](https://jupyterbook.org).
+# Besides having a really nice layout,
+# Jupyter Book provides other wonderful functionality.
 #
-#
+# On the top right of the page you will see links to the Git Repository,
+# as well as links for creating an *issue* and suggesting a change.
 
 # %% [markdown]
 # ## Structure of This Blog
 #
-# This blog
-
-# ## Bad Documentation - A (Sadly True) Story
+# Anyway, it's time to wrap up this post,
+# and what better way to do that than with a diagram
+# made *automagically* with code?
 #
-# Someone inserted an image of a plot into a document.
-# The plot's data has been updated, but the documentation has not.
-# The documentation is officially *out-of-date*.
+# This diagram is built using
+# [mermaid extension for Sphinx](https://github.com/mgaitan/sphinxcontrib-mermaid),
+# which itself uses
+# [mermaid.js](https://mermaid-js.github.io/mermaid/#/).
 #
-# You try to fix this problem... how hard can it be?
-# First, where is the updated data for the plot?
-# Where is the original document?
-# Maybe someone more *experienced* needs to fix this... who would that be?
+# ```{note}
+# This diagram is subject to getting *out-of-date*.
+# ```
 #
-# Finally, the plot is updated. Now, just need to update the document.
-# But wait, I need to update a few more documents along with some power point presentations?
-# Oh yeah, and one of our customers wants a report with the plot,
-# but it needs to have a blue background...
-#
-
-# %% [markdown]
 # ```{mermaid}
 # sequenceDiagram
 #   participant Alice
