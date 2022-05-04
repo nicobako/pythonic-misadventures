@@ -181,7 +181,7 @@ plot_sales(df=df)
 #
 # ```{note}
 # This diagram is subject to getting *out-of-date*.
-# ```mermaid
+# ```{mermaid}
 # flowchart TD
 #     subgraph local [Local]
 #         subgraph write [Write]
