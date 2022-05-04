@@ -42,13 +42,6 @@
 # I wrote **a lot** of **bad** documentation.
 # I learned a lot along the way.
 
-# %%
-from datetime import date, timedelta
-
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-
 # %% [markdown]
 # ## Lessons Learned
 #
@@ -83,6 +76,13 @@ import pandas as pd
 # created elsewhere, I just make the plot right here:
 
 # %%
+from datetime import date, timedelta
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+
 def get_sales_data(*, last_n_days: int):
     """Get the sales data for `last_n_days`.
 
@@ -181,38 +181,52 @@ plot_sales(df=df)
 #
 # ```{note}
 # This diagram is subject to getting *out-of-date*.
-# ```
-#
-# ```{mermaid}
-# sequenceDiagram
-#   participant Alice
-#   participant Bob
-#   Alice->John: Hello John, how are you?
-#   loop Healthcheck
-#       John->John: Fight against hypochondria
-#   end
-#   Note right of John: Rational thoughts <br/>prevail...
-#   John-->Alice: Great!
-#   John->Bob: How about you?
-#   Bob-->John: Jolly good!
+# ```mermaid
+# flowchart TD
+#     subgraph local [Local]
+#         subgraph write [Write]
+#             direction TD
+#             wa(Write Article)
+#             wb(Build Blog)
+#             wi(Improve Article)
+#             wa --> wb --> wi
+#             wi --> wa
+#         end
+#         subgraph git [Git]
+#             direction TD
+#             ga(git add)
+#             gc(git commit)
+#             pc(pre-commit)
+#             g-pc-errors{pre-commit Errors?}
+#             gp(git push)
+#             ga --> gc --> pc --> gp
+#         end
+#         local --> git
+#     end
+#     subgraph github [GitHub]
+#         direction TD
+#         gh-c(Check Code Quality)
+#         gh-b(Build Blog)
+#         gh-be{Build Errors?}
+#         gh-d(Deploy)
+#         gh-c --> gh-b --> gh-be
+#         gh-be -->|yes| wi
+#         gh-be -->|no| gh-d
+#     end
 # ```
 
-# As a software engineer, I am jast as interested in the
-# infrastructure of my blog's continuous integration
-# than I am about the content I was writing.
+
+# %% [markdown]
+# ## Conclusion
 #
-# # How This Blog Works
+# Writing good documentation is a lot like writing good software:
 #
-# I've been meaning to write up an article
-# about how this blog works, and why I've designed it in such a way.
+# * Do your best to write *correct* documentation
+# * In the event that any portion of the documentation is *incorrect*
+#   * Fix the issue quickly
+#   * Distribute correct documentation quickly to all readers
 #
-# The key takeaway is that the infrastructure of this blog was designed
-# to mimmick the infrasructure required to create professional documentation.
-# By *professional documentation*, I mean something that is of good enough quality to hand to your boss and say:
-# "Here's that documentation you asked for".
-#
-# Great care has been taken to ensure the system is robust, flexible, and scaleable.
-# Of course I make mistakes, but at least I can fix them as needed,
-# and the fixes automagically apply to the entire blog!
-# The lessons I learnt creating this blog can be directly
-# applied to creating professional documentation.
+# Having a robust infrastructure for testing, building, and deploying
+# your documentation is key to having *good documentation*.
+# Making your documentation easy to fix is key to ensuring that
+# your documentation *stays good*.
