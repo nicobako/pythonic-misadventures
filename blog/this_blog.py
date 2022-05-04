@@ -13,43 +13,35 @@
 # ---
 
 # %% [markdown]
-# # How This Blog Works
+# # On Writing Good Documentation
 #
-# I've been meaning to write up an article
-# about how this blog works, and why I've designed it in such a way.
+# People write blogs for all sorts of reasons.
+# This article is about *why I write this blog*.
 #
-# The key takeaway is that the infrastructure of this blog was designed
-# to mimmick the infrasructure required to create professional documentation.
-# By *professional documentation*, I mean something that is of good enough quality to hand to your boss and say:
-# "Here's that documentation you asked for".
-#
-# Great care has been taken to ensure the system is robust, flexible, and scaleable.
-# Of course I make mistakes, but at least I can fix them as needed,
-# and the fixes automagically apply to the entire blog!
-# The lessons I learnt creating this blog can be directly
-# applied to creating professional documentation.
-
-from datetime import date, timedelta
-
-# %%
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-
-# %% [markdown]
-# ## Did Someone Say *Documentation*?
-#
-# Merely uttering the word *documentation* can instill dread in your coworkers.
-# We all have so many negative emotions associated with *bad* documentation.
+# ## Documentation - the Common Denominator
 #
 # No matter what your role, whether you're a manager,
 # or you're fresh-out-of-college, chances are you need to write some documentation.
 #
-# So, how to we write *good* documentation instead of *bad* documentation?
-# First, let's look at what makes *bad* documentation.
+# I too found myself in this situation.
+# I was eager to work on *cool projects* and implementing *new features*,
+# but the thought of *writing documentation* sounded like a bore.
+# It took me a while to realize just how important writing *good documentation* is,
+# and how much fun it can actually be.
+#
+# I first began writing this blog with the intention of learning
+# important skills for creating *professional-level* documentation.
+# By *professional* I mean documentation you would feel
+# proud turning in to your boss.
+#
+# But, before I ever wrote any *decent* documentation,
+# I wrote **a lot** of **bad** documentation.
 
 # %% [markdown]
 # ## Common Characteristic of **Bad** Documentation
+#
+# My first attempts at writing documentation usually ended disastrously.
+# Here are some of the most common recurring issues I experienced.
 #
 # ### Easily Out-of-date
 #
@@ -73,24 +65,37 @@ import pandas as pd
 # Reproducibility is one of the foundational concepts of the *scientific method*.
 # It is an essential part of *peer reviewed research*.
 # If your results can't be reproduced, then there is a **real problem**.
-#
+
+
+# %%
+from datetime import date, timedelta
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 # %% [markdown]
 # ## Characteristics of **Good** Documentation
 #
-# Now that we have an understanding of what *bad* documentation is,
-# let's see how we can make *good* documentation.
+# Writing *good* documentation is about a lot more than just *writing*.
+# It's also about having a solid continuous integration pipeline,
+# complete with quality-assurance, testing, building, and deployment.
+#
+# All of this infrastructure is importanti in having *good* documentation,
+# *Good* documentation has the following characteristics.
 
 # %% [markdown]
 # ### Stays Up-to-date
 #
 # In order to keep documentation stay *up-to-date* the documentation must be *executable*.
-# That means **no screenshots**, **no copy-pasting**, unless these processes are automated,
-# or screenshots taken one day will be valid from now unto forever.
+# This usually means **no screenshots**, **no copy-pasting**, and nothing that can become *out-of-date*.
+#
+# ```{note}
+# Screenshots are warranted if they will never become *out-of-date*.
+# ```
 #
 # If data needs to be used to generate a plot, then that's exactly what happens:
 # data is fetched and a plot is generated.
-#
 # For example, imagine I want to get sales data
 # for the last *n* number of days.
 
@@ -162,7 +167,7 @@ test_db_connection()
 # In the database the sales are stored in "cents", and I thought it was "dollars".
 
 # %%
-# Convert sales to dollars
+# Convert sales from cents to dollars
 df["sales"] *= 0.01
 plot_sales(df=df)
 
@@ -171,11 +176,11 @@ plot_sales(df=df)
 # than just fixing code... it must be easy
 # to distribute/deploy the fixed changes.
 # For that, having a continuous integration system
-# which automagically deploys the documentation is key.
+# which automagically deploys the documentation is helpful.
 
 # ### Easy to Reproduce
 #
-# Ideally, the documentation should be able to be generated from the command-line,
+# The documentation should be able to be generated from the command-line,
 # and setting up an environment to generate the documentation should be fully automated.
 # As mentioned earlier, having continuous integration is really helpful here.
 #
@@ -200,7 +205,6 @@ plot_sales(df=df)
 # ## Structure of This Blog
 #
 # This blog
-
 
 # ## Bad Documentation - A (Sadly True) Story
 #
@@ -234,4 +238,22 @@ plot_sales(df=df)
 #   Bob-->John: Jolly good!
 # ```
 
-# %%
+# As a software engineer, I am jast as interested in the
+# infrastructure of my blog's continuous integration
+# than I am about the content I was writing.
+#
+# # How This Blog Works
+#
+# I've been meaning to write up an article
+# about how this blog works, and why I've designed it in such a way.
+#
+# The key takeaway is that the infrastructure of this blog was designed
+# to mimmick the infrasructure required to create professional documentation.
+# By *professional documentation*, I mean something that is of good enough quality to hand to your boss and say:
+# "Here's that documentation you asked for".
+#
+# Great care has been taken to ensure the system is robust, flexible, and scaleable.
+# Of course I make mistakes, but at least I can fix them as needed,
+# and the fixes automagically apply to the entire blog!
+# The lessons I learnt creating this blog can be directly
+# applied to creating professional documentation.
