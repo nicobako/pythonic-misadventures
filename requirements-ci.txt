@@ -7,3 +7,4 @@ pydantic==1.9.0
 rich==11.0.0
 scipy==1.7.3
 xarray==0.20.2
+sphinxcontrib_mermaid==0.7.1

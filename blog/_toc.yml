@@ -3,6 +3,7 @@ root: intro
 parts:
 - caption: Articles
   chapters:
+  - file: this_blog
   - file: function_dispatch
   - file: wordle
   - file: maze
