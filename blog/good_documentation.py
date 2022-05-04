@@ -42,35 +42,6 @@
 # I wrote **a lot** of **bad** documentation.
 # I learned a lot along the way.
 
-# ## Common Characteristic of **Bad** Documentation
-#
-# My first attempts at writing documentation usually ended disastrously.
-# Here are some of the most common recurring issues I experienced.
-#
-# ### Easily Out-of-date
-#
-# It's all too easy for documentation to become *out-of-date*.
-# With how often we - or our customers - upgrade software,
-# documentation can become obsolete faster than you can write it.
-#
-# ### Difficult to Update
-#
-# Have you ever been given a *pdf* document that had a typo in it.
-# You wanted to fix the typo, but *how do you fix a typo in a PDF*?
-#
-# ### Difficult or Impossible to Suggest Improvements
-#
-# If you find a typo, and can't fix it yourself,
-# is there someone else you can ask to fix it?
-# How do you get in touch with them and tell them about the issue?
-#
-# ### Difficult or Impossible to Reproduce
-#
-# Reproducibility is one of the foundational concepts of the *scientific method*.
-# It is an essential part of *peer reviewed research*.
-# If your results can't be reproduced, then there is a **real problem**.
-
-
 # %%
 from datetime import date, timedelta
 
