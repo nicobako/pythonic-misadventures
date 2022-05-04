@@ -42,3 +42,4 @@ sphinx:
             - jupytext.reads
             - fmt: py:percent
     exclude_patterns: ["project_euler/project_euler.py"]
+    mermaid_version: 9.0.1
