@@ -37,19 +37,29 @@
 #
 # I first began writing this blog with the intention of learning
 # important skills for creating *professional-level* documentation.
-# I made plenty of mistakes, and wrote plenty of *bad documentation*
+#
+# I treated this blog as a testing ground for exploring
+# a documentation infrastructure that can ensure
+# that documentation is always of professional quality.
+# All of my design decisions bore this in mind.
+#
+# of course, I made plenty of mistakes along the way,
+# and wrote plenty of *bad documentation*
 # before I developed a better system, and subsequently, better documentation.
 
 # %% [markdown]
 # ## Lessons Learned
 #
-# Writing *good documentation* entails more than just *writing*.
+# Writing *good documentation* entails much more than just *writing*.
 # How do you ensure that your documentation is *correct*, *up-to-date*,
 # of *high-quality*, and, most importantly, *looks good*?
 #
 # I've learnt that having a solid continuous integration pipeline,
 # complete with quality-assurance, testing, building, and deployment,
 # is essential to having high-quality documentation.
+#
+# In essence, the same principles that apply to haivg *good softawre>
+# apply to having *good documentation*.
 
 # %% [markdown]
 # ### Staying Up-to-date
@@ -59,15 +69,6 @@
 #
 # In order to keep documentation stay *up-to-date* it must be *executable*.
 # This means that any images/plots in the documentation are freshly generated.
-#
-# This is made possible by such wonderful tools as [Jupyter notebooks](https://jupyter.org/),
-# which allow us to mix *code* and *text* into one *executable document*.
-#
-# Initially, I used Jupyter notebooks for this blog, and still
-# consider it a solid choice. I currently use [the percent py format](https://jupytext.readthedocs.io/en/latest/formats.html#the-percent-format)
-# for reasons I'll elaborate on later.
-#
-# #### Simple Example of Executable Documentation
 #
 # A common use case would be needing to add a plot to some documentation.
 # Imagine I want to get sales data for the last *n* number of days.
@@ -107,6 +108,14 @@ df = get_sales_data(last_n_days=100)
 plot_sales(df=df)
 
 # %% [markdown]
+# This is made possible by such wonderful tools as [Jupyter notebooks](https://jupyter.org/),
+# which allow us to mix *code* and *text* into one *executable document*.
+#
+# Initially, I used Jupyter notebooks for this blog, and still
+# consider it a solid choice. I currently use [the percent py format](https://jupytext.readthedocs.io/en/latest/formats.html#the-percent-format)
+# for reasons I'll elaborate on later.
+
+# %% [markdown]
 # ### Is Easily Updated
 #
 # No matter how hard you try, there will always be a *bug* or *issue*
@@ -136,8 +145,8 @@ plot_sales(df=df)
 # which automagically deploys the documentation is essential.
 # This blog uses
 # [GitHub Actions](https://docs.github.com/en/actions)
-# [GitHub Pages](https://pages.github.com/) for hosting
-# to automate the testing, building, and deployment of this blog.
+# to automate the testing, building, and deployment of this blog,
+# and [GitHub Pages](https://pages.github.com/) for hosting the blog.
 #
 # ### Easy to Reproduce
 #
@@ -151,7 +160,7 @@ plot_sales(df=df)
 # In this blog people can see the text, the plots, but also the code!
 # This has the added benefit that people can understand how their plots were created.
 # If they ever need to improve anything, they can more easily do that.
-
+#
 # ### Can Easily Suggest Improvements
 #
 # All documentation will have some issues and/or inaccuracies.
