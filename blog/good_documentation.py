@@ -181,38 +181,43 @@ plot_sales(df=df)
 #
 # ```{note}
 # This diagram is subject to getting *out-of-date*.
+# ```
+# ### Writing an Article - Process Overview
+#
 # ```{mermaid}
-# flowchart TD
-#     subgraph local [Local]
-#         subgraph write [Write]
-#             direction TD
-#             wa(Write Article)
-#             wb(Build Blog)
-#             wi(Improve Article)
-#             wa --> wb --> wi
-#             wi --> wa
-#         end
-#         subgraph git [Git]
-#             direction TD
-#             ga(git add)
-#             gc(git commit)
-#             pc(pre-commit)
-#             g-pc-errors{pre-commit Errors?}
-#             gp(git push)
-#             ga --> gc --> pc --> gp
-#         end
-#         local --> git
-#     end
-#     subgraph github [GitHub]
-#         direction TD
-#         gh-c(Check Code Quality)
-#         gh-b(Build Blog)
-#         gh-be{Build Errors?}
-#         gh-d(Deploy)
-#         gh-c --> gh-b --> gh-be
-#         gh-be -->|yes| wi
-#         gh-be -->|no| gh-d
-#     end
+# flowchart TB
+#     write(Write/Edit Article)
+#     build(Build Blog)
+#
+#     write --> build
+#
+#     happy{Hapy with Article?}
+#
+#     build --> happy
+#
+#     commit(git commit)
+#
+#     happy -->|Yes| commit
+#     happy -->|No| write
+#
+#     pre-commit(pre-commit)
+#     pre-commit-successful{pre-commit Successful?}
+#     push(git push)
+#
+#     commit --> pre-commit
+#     pre-commit --> pre-commit-successful
+#     pre-commit-successful -->|Yes| push
+#     pre-commit-successful -->|No| write
+#
+#     run-ci(Run Continuous Integration)
+#     push --> run-ci
+#     ci-successful{CI Successful?}
+#
+#     run-ci --> ci-successful
+#
+#     deploy(Deploy)
+#     ci-successful -->|Yes| deploy
+#     ci-successful -->|No| write
 # ```
 
 
