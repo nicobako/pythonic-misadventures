@@ -243,3 +243,9 @@ plot_sales(df=df)
 # your documentation is key to having *good documentation*.
 # Making your documentation easy to fix is key to ensuring that
 # your documentation *stays good*.
+#
+# Your solution to *good documentation* will look different than mine,
+# but the *principles of good documentation* will be the same.
+# Actually, yours might be better...
+#
+# Anyway, happy documenting!
