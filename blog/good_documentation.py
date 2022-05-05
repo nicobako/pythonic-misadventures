@@ -25,9 +25,9 @@
 # Sometimes our documentation is in the form of a word document,
 # presentation slides, a formal report, or a simple `README.txt`.
 #
-# Most of the time, however, we don't enjoy writing documentation...
-# we see it as a means to an end.
-# The thought of *writing documentation* sounded like a bore.
+# Sadly, even though we are all writing documentation,
+# very few people *enjoy* writing documentation.
+# For many people, the thought of *writing documentation* sounds like a bore.
 #
 # It took me a while to realize just how important writing documentation is,
 # and that, when we set up our *documentation infrastructure* properly,
@@ -37,15 +37,13 @@
 #
 # I first began writing this blog with the intention of learning
 # important skills for creating *professional-level* documentation.
-#
-# But, before I ever wrote any *decent* documentation,
-# I wrote **a lot** of **bad** documentation.
-# I learned a lot along the way.
+# I made plenty of mistakes, and wrote plenty of *bad documentation*
+# before I developed a better system, and subsequently, better documentation.
 
 # %% [markdown]
 # ## Lessons Learned
 #
-# Writing *good documentation* is about a lot more than just *writing*.
+# Writing *good documentation* entails more than just *writing*.
 # How do you ensure that your documentation is *correct*, *up-to-date*,
 # of *high-quality*, and, most importantly, *looks good*?
 #
@@ -68,12 +66,12 @@
 # Initially, I used Jupyter notebooks for this blog, and still
 # consider it a solid choice. I currently use [the percent py format](https://jupytext.readthedocs.io/en/latest/formats.html#the-percent-format)
 # for reasons I'll elaborate on later.
-
-# A common use case would be wanting to add a plot to my documentation.
-# Imagine I want to get sales data
-# for the last *n* number of days.
-# Instead of *copy-pasting* an image of a plot
-# created elsewhere, I just make the plot right here:
+#
+# #### Simple Example of Executable Documentation
+#
+# A common use case would be needing to add a plot to some documentation.
+# Imagine I want to get sales data for the last *n* number of days.
+# Instead of *copy-pasting* an image of a plot created elsewhere, I just make the plot right here:
 
 # %%
 from datetime import date, timedelta
@@ -128,6 +126,8 @@ plot_sales(df=df)
 # Python scripts was precisely because Python scripts (which are plain text files)
 # are much easier to modify and fix than Jupyter notebooks (which are JSON files).
 #
+# ### Distributing Documentation
+#
 # There's also more to *easily updating* than just fixing code.
 # You must distribute the fixed changes to your audience.
 # How do you ensure your readers get the latest documentation?
@@ -146,8 +146,7 @@ plot_sales(df=df)
 # If your results can't be reproduced, then there is a **real problem**.
 #
 # The documentation should be able to be generated from the command-line,
-# and setting up an environment to generate the documentation should be fully automated.
-# As mentioned earlier, having continuous integration is really helpful here.
+# and having continuous integration is really helpful here.
 #
 # In this blog people can see the text, the plots, but also the code!
 # This has the added benefit that people can understand how their plots were created.
