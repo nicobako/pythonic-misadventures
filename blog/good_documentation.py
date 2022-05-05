@@ -19,17 +19,17 @@
 # or you're fresh-out-of-college, chances are you need to write some documentation.
 #
 # We need to write documentation for all sorts of reasons.
-# Sometimes we need to document our progress on a task, or the steps of a process,
-# or how-to use a tool.
+# Sometimes we need to document our progress on a task, or outline the steps of a process,
+# or create a users manual for a a tool.
 #
 # Sometimes our documentation is in the form of a word document,
 # presentation slides, a formal report, or a simple `README.txt`.
 #
 # Sadly, even though we are all writing documentation,
 # very few people *enjoy* writing documentation.
-# For many people, the thought of *writing documentation* sounds like a bore.
+# and very few people succeed in writing *good documentation*.
 #
-# It took me a while to realize just how important writing documentation is,
+# It took me a while to realize just how important writing *good documentatin* is,
 # and that, when we set up our *documentation infrastructure* properly,
 # we can *actually have fun writing good documentation*!
 #
@@ -43,7 +43,7 @@
 # that documentation is always of professional quality.
 # All of my design decisions bore this in mind.
 #
-# of course, I made plenty of mistakes along the way,
+# Of course, I made plenty of mistakes along the way,
 # and wrote plenty of *bad documentation*
 # before I developed a better system, and subsequently, better documentation.
 
@@ -241,8 +241,9 @@ plot_sales(df=df)
 #
 # Having a robust infrastructure for testing, building, and deploying
 # your documentation is key to having *good documentation*.
+#
 # Making your documentation easy to fix is key to ensuring that
-# your documentation *stays good*.
+# your documentation *stays good* over time.
 #
 # Your solution to *good documentation* will look different than mine,
 # but the *principles of good documentation* will be the same.
