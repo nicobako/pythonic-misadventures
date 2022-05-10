@@ -21,6 +21,7 @@ parts:
   - file: project_euler/problem_3
   - file: project_euler/problem_4
   - file: project_euler/problem_5
+  - file: project_euler/problem_6
 - caption: More Information
   chapters:
   - file: about_the_author
