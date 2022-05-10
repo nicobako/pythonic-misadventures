@@ -25,9 +25,6 @@ jobs:
         python -m pip install --upgrade pip wheel
         python -m pip install -r requirements-ci.txt
         ipython kernel install --user --name=nicobako.github.io
-    - name: Check code quality
-      run: |
-        black --check blog/
     - name: Build blog
       run: |
         jupyter-book build blog --warningiserror
