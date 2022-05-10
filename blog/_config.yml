@@ -8,7 +8,7 @@ logo: logo.png
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: auto
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -30,12 +30,16 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  use_edit_page_button: true
 
 # Use jupytext to parse py:percent scripts
 sphinx:
+  extra_extensions:
+    - sphinxcontrib.mermaid
   config:
     nb_custom_formats:
         .py:
             - jupytext.reads
             - fmt: py:percent
     exclude_patterns: ["project_euler/project_euler.py"]
+    mermaid_version: 9.0.1

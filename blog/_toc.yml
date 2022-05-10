@@ -3,6 +3,7 @@ root: intro
 parts:
 - caption: Articles
   chapters:
+  - file: good_documentation
   - file: function_dispatch
   - file: wordle
   - file: maze
