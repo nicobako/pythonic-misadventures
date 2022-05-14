@@ -9,8 +9,6 @@ _build/
 .ipynb_checkpoints/
 debug.log
 
-# vscode folder
-.vscode/
 
 # any compiled scripts/modules
 __pycache__/
