@@ -16,11 +16,10 @@
 # # Problem 11
 
 
+# %%
 import itertools
 
 import numpy as np
-
-# %%
 from project_euler import get_problem_description
 
 get_problem_description(11)
