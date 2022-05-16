@@ -15,10 +15,8 @@
 # %% [markdown]
 # # Problem 8
 
-
-from more_itertools import sliding_window
-
 # %%
+from more_itertools import sliding_window
 from project_euler import get_problem_description
 
 get_problem_description(8)
