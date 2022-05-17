@@ -3,16 +3,16 @@ root: intro
 parts:
 - caption: Articles
   chapters:
-  - file: good_documentation
-  - file: function_dispatch
-  - file: wordle
-  - file: maze
-  - file: image_boundaries
-  - file: images
-  - file: sudoku
-  - file: xarray_computations
-  - file: pydantic_autodoc
-  - file: how_to_flatten_a_python_dict
+  - file: articles/good_documentation
+  - file: articles/function_dispatch
+  - file: articles/wordle
+  - file: articles/maze
+  - file: articles/image_boundaries
+  - file: articles/images
+  - file: articles/sudoku
+  - file: articles/xarray_computations
+  - file: articles/pydantic_autodoc
+  - file: articles/how_to_flatten_a_python_dict
 - caption: Project Euler
   chapters:
   - file: project_euler/index
