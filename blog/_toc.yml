@@ -3,6 +3,7 @@ root: intro
 parts:
 - caption: Articles
   chapters:
+  - file: articles/music
   - file: articles/good_documentation
   - file: articles/function_dispatch
   - file: articles/wordle
