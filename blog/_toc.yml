@@ -28,5 +28,5 @@ parts:
   - file: project_euler/problem_11
 - caption: More Information
   chapters:
-  - file: about_the_author
-  - file: about_this_blog
+  - file: info/about_the_author
+  - file: info/about_this_blog
