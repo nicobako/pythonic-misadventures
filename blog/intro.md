@@ -1,7 +1,7 @@
 # Welcome to Nico's Blog
 
-Hello, World! My name is [Nico Bakomihalis](about_the_author.md),
-and this is [my blog](about_this_blog.md).
+Hello, World! My name is [Nico Bakomihalis](info/about_the_author.md),
+and this is [my blog](info/about_this_blog.md).
 
 Finding a balance between writing *good* code and writing
 *perfect* code is a challenge in and of itself.
