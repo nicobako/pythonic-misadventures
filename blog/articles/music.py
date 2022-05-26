@@ -20,7 +20,7 @@
 # > What if the notes of musical scales followed a *different* pattern?
 # > For example, what if musical scales were based on the *decimal* system?
 #
-# ```{admonition}
+# ```{note}
 # For more info on how musical scales work read [this](https://pages.mtu.edu/~suits/scales.html).
 # There are also a ton of articles explaining how music works...
 # ```
