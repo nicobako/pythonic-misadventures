@@ -39,7 +39,7 @@ import networkx as nx
 # so I created a maze and downloaded it locally.
 
 # %%
-maze_file_path = Path("./res/maze.png")
+maze_file_path = Path("../res/maze.png")
 assert maze_file_path.exists()
 
 # %% [markdown]
