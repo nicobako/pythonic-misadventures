@@ -102,8 +102,7 @@
 from typing import Iterator, List
 
 import numpy as np
-import pandas as pd
-from IPython.display import Audio
+from IPython.display import Audio, display
 
 
 class Note:
@@ -162,30 +161,13 @@ assert 880.0 == classical.frequency(Note(5, 0))
 # useful visualizations and audio - this is about music, after all.
 
 # %%
-def gen_frequency_table(musical_system: MusicalSystem):
-    octave = 4  # arbitrary octave - all pitches in any actave have the same ratios
-    notes = list(musical_system.octave_iter(octave))
-    first_note = notes[0]
-    first_note_frequency = musical_system.frequency(first_note)
-    data = []
-    for note in notes:
-        ratio = musical_system.frequency(note) / first_note_frequency
-
-        data.append({"pitch": note.pitch, "ratio": round(ratio, 2)})
-    df = pd.DataFrame(data=data)
-    return df
-
-
-gen_frequency_table(classical)
-
-# %%
 FRAME_RATE = 44100
 
 
 def compute_waveform(frequency: float, duration: float) -> np.ndarray:
     time = np.linspace(0, duration, int(FRAME_RATE * duration))
     waveform = np.sin(2.0 * np.pi * time * frequency)
-    return waveform * 0.5  # lower the volume by half
+    return waveform
 
 
 def play(waveform: np.ndarray) -> Audio:
@@ -227,3 +209,133 @@ play(minor_third)
 # %%
 major_third = gen_chord_waveform(classical, [Note(3, 6), Note(3, 10)], 2.0)
 play(major_third)
+
+
+# %%
+def play_all_notes_in_octave(
+    musical_system: MusicalSystem,
+    octave: int,
+):
+    waveforms = [
+        compute_waveform(
+            musical_system.frequency(
+                note,
+            ),
+            0.5,
+        )
+        for note in musical_system.octave_iter(octave)
+    ]
+    waveforms = np.hstack(waveforms)
+    return play(waveforms)
+
+
+play_all_notes_in_octave(
+    classical,
+    3,
+)
+
+# %%
+def play_all_intervals_in_octave(
+    musical_system: MusicalSystem,
+    octave: int,
+):
+    notes = list(musical_system.octave_iter(octave))
+    first_note = notes.pop(0)
+
+    waveforms = []
+    for note in notes:
+        wvf_first_note = compute_waveform(
+            musical_system.frequency(first_note),
+            0.25,
+        )
+        wvf_note = compute_waveform(
+            musical_system.frequency(note),
+            0.25,
+        )
+        wvf_chord = gen_chord_waveform(
+            musical_system,
+            [first_note, note],
+            0.5,
+        )
+        waveforms.append(wvf_first_note)
+        waveforms.append(wvf_note)
+        waveforms.append(wvf_chord)
+    waveforms = np.hstack(waveforms)
+    return play(waveforms)
+
+
+play_all_intervals_in_octave(
+    classical,
+    3,
+)
+
+
+# %%
+def create_report(
+    musical_system: MusicalSystem,
+    octave: int,
+):
+    play_notes = play_all_notes_in_octave(musical_system, octave)
+    play_intervals = play_all_intervals_in_octave(musical_system, octave)
+
+    return display(play_notes, play_intervals)
+
+
+create_report(classical, 3)
+
+# %% [markdown]
+# ## Custom Musical Systems
+#
+# Okay, now it's time to create some custom musical systems!
+#
+# ### Decimal System
+#
+# Imagine a system based purely on the *decimal* system.
+# In my mind, it would look like this:
+
+# %%
+decimal_system = MusicalSystem(
+    num_pitches=10,
+    ref_frequency=10.0,
+    ref_note=Note(0, 0),
+)
+
+create_report(
+    decimal_system,
+    4,
+)
+
+# %% [markdown]
+# ### Baker's Dozen
+#
+# In real music there are 12 pitches... what if there were 13?
+
+# %%
+bakers_dozen_system = MusicalSystem(
+    num_pitches=13, ref_frequency=440, ref_note=Note(4, 0)
+)
+
+create_report(
+    bakers_dozen_system,
+    3,
+)
+
+# %% [markdown]
+# ### System of 6 Notes
+#
+# What if a system had 6 notes?
+
+# %%
+six_system = MusicalSystem(num_pitches=6, ref_frequency=440, ref_note=Note(4, 0))
+
+create_report(six_system, 3)
+
+# %% [markdown]
+# ### System of 20 Notes
+#
+# What if we had 20 notes?
+
+# %%
+twenty_system = MusicalSystem(num_pitches=20, ref_frequency=20, ref_note=Note(0, 0))
+
+create_report(twenty_system, 3)
