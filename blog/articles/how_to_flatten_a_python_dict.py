@@ -59,7 +59,6 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple, Union
 
 import pandas as pd
-import requests
 
 # %%
 roster = {
@@ -210,24 +209,6 @@ assert roster_flattened.equals(roster_flattened_expected)
 
 # %% [markdown]
 # Yay! Looks like it works.
-#
-# ### Using our Function with Real Data
-#
-# Let's get some real JSON data from the internet
-# and see if it works...
-
-# %%
-honolulu_bus_routes = requests.get(
-    url="https://data.honolulu.gov/api/views/s5c7-gtgi/rows.json?accessType=DOWNLOAD"
-).json()
-honolulu_bus_routes_df = flatten_json_to_df(
-    obj=honolulu_bus_routes, name="honolulu_bus_routes"
-)
-honolulu_bus_routes_df
-
-# %% [markdown]
-# Great, it works! What do we do with this now?
-# I don't know... that's your problem to figure out.
 #
 # ## Customizing the Flattening Function
 #
