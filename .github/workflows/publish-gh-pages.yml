@@ -30,7 +30,6 @@ jobs:
       working-directory: blog/_build/html
       run: |
         touch .nojekyll
-        echo "blog.nicobako.dev" > CNAME
         git config --global user.email "nicobako@gmail.com"
         git config --global user.name "nicobako"
         git init
