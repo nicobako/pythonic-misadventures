@@ -1,0 +1,885 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Custom Function Dispatching &#8212; Nico&#39;s Blog</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'articles/function_dispatch';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Best Wordle Words" href="wordle.html" />
+    <link rel="prev" title="On Good Documentation" href="good_documentation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Nico’s Blog
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Articles</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="music.html">What if Music Used a Different System?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="good_documentation.html">On Good Documentation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Custom Function Dispatching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wordle.html">Best Wordle Words</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maze.html">Solving a Maze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_boundaries.html">Boundary Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">Treating pixels as vectors</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="sudoku.html">Sudoku Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xarray_computations.html">xarray for modeling and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pydantic_autodoc.html">Autodocumenting Pydantic Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_flatten_a_python_dict.html">How to Flatten a Python <code class="docutils literal notranslate"><span class="pre">dict</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project Euler</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/index.html">Project Euler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_1.html">Problem 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_2.html">Problem 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_3.html">Problem 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_4.html">Problem 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_5.html">Problem 5</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_6.html">Problem 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_7.html">Problem 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_11.html">Problem 11</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">More Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../info/about_the_author.html">About Nico Bakomihalis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../info/about_this_blog.html">About this Blog</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/nicobako/nicobako.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nicobako/nicobako.github.io/edit/master/blog/articles/function_dispatch.py" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nicobako/nicobako.github.io/issues/new?title=Issue%20on%20page%20%2Farticles/function_dispatch.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/articles/function_dispatch.py" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.py</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Custom Function Dispatching</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#existing-function-dispatching-solutions">Existing Function Dispatching Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functools-dispatch"><code class="docutils literal notranslate"><span class="pre">functools.dispatch</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multipledispatch"><code class="docutils literal notranslate"><span class="pre">multipledispatch</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-dispatching-works">How Dispatching Works</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-runtime">Static vs Runtime</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-dispatching-solution">Custom Dispatching Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispatching-based-on-types">Dispatching Based on Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispatch-based-on-values">Dispatch Based on Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="custom-function-dispatching">
+<h1>Custom Function Dispatching<a class="headerlink" href="#custom-function-dispatching" title="Permalink to this heading">#</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In progress.</p>
+</div>
+<p>I used to do a lot of C++ programming,
+I really love its strong typing system, and
+how easy it is to overload functions.</p>
+<p>There are some existing solutions in Python for overloading functions,
+but I always felt they were missing something.
+Just like any determined <em>Pythonista</em>, I set out on an adventure to implement a solution myself!</p>
+<p>It took me a while to figure it out, but I think this is a decent solution!
+In this article we’ll create a custom and generic function dispatching infrastructure.
+If you like it, feel free to copy-paste this solution into your codebase and customize it as needed.</p>
+<section id="existing-function-dispatching-solutions">
+<h2>Existing Function Dispatching Solutions<a class="headerlink" href="#existing-function-dispatching-solutions" title="Permalink to this heading">#</a></h2>
+<p>I won’t go into too much detail here, but if you’re interested in function dispatching,
+you should probably familiarize yourself with these existing solutions before
+trying to create a custom solution.</p>
+<section id="functools-dispatch">
+<h3><a class="reference external" href="https://docs.python.org/3/library/functools.html#functools.singledispatch"><code class="docutils literal notranslate"><span class="pre">functools.dispatch</span></code></a><a class="headerlink" href="#functools-dispatch" title="Permalink to this heading">#</a></h3>
+<p>This is built into the standard library, and should be your <em>first choice</em>.
+It provides functionality for dispatching functions based on the type of the first argument.
+It even supports <a class="reference external" href="https://docs.python.org/3/library/typing.html"><em>type hinting</em></a>,
+which I hope you are all doing by now.</p>
+</section>
+<section id="multipledispatch">
+<h3><a class="reference external" href="https://pypi.org/project/multipledispatch/"><code class="docutils literal notranslate"><span class="pre">multipledispatch</span></code></a><a class="headerlink" href="#multipledispatch" title="Permalink to this heading">#</a></h3>
+<p>If you need to dispatch functions based on types of multiple arguments,
+then this is a really good solution.</p>
+</section>
+</section>
+<section id="how-dispatching-works">
+<h2>How Dispatching Works<a class="headerlink" href="#how-dispatching-works" title="Permalink to this heading">#</a></h2>
+<p>In order for function dispatching to work we need to be able to look at the values <em>at runtime</em> and match them to an appropriate <em>statically defined function</em>. I’m using the terms <em>runtime</em> and <em>static</em> intentionally here, since they play a critical role in how this works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span><span class="p">,</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">BoundArguments</span><span class="p">,</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">signature</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Hashable</span><span class="p">,</span> <span class="n">Type</span><span class="p">,</span> <span class="n">TypeAlias</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="static-vs-runtime">
+<h3>Static vs Runtime<a class="headerlink" href="#static-vs-runtime" title="Permalink to this heading">#</a></h3>
+<p>I won’t go into too much detail, but <em>static</em> refers to properties of the <em>code itself</em> and <em>runtime</em> refert to properties of the <em>values themselves</em>. Here’s a simple expample.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Above, <code class="docutils literal notranslate"><span class="pre">x</span></code> has a <em>runtime value</em> of <code class="docutils literal notranslate"><span class="pre">5</span></code>, and a <em>static type-hint</em> of <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p>When we define a function, we can inspect <em>static properties</em> of the function via its <em>function signature</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_custom_func</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="n">signature</span><span class="p">(</span><span class="n">my_custom_func</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Signature (x: int, y: float, z: str, *args, **kwargs)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>When we call a function with certain arguments, we can inspect those values at runtime by looking at which values are <em>bound</em> to which which function parameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">signature</span><span class="p">(</span><span class="n">my_custom_func</span><span class="p">)</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BoundArguments (x=5, y=3.0, z=&#39;hello&#39;, args=(0, 1, 2), kwargs={&#39;a&#39;: &#39;a&#39;, &#39;b&#39;: &#39;b&#39;})&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>By combining these two methods (of inspecting <em>static</em> and <em>runtime</em> properties) we can devise a simple method for creating a custom <em>dispatching solution</em>.</p>
+</section>
+</section>
+<section id="custom-dispatching-solution">
+<h2>Custom Dispatching Solution<a class="headerlink" href="#custom-dispatching-solution" title="Permalink to this heading">#</a></h2>
+<p>We will inspect <em>static function signatures</em> to generate a <em>key</em>.
+We will <em>register</em> functions one-by-one, keeping track of each function’s key.
+When functions are called at runtime, we will inspect <em>runtime bound arguments</em> to generate a <em>key</em>,
+and look for a function whose key matches.
+If no match is found, then the default implementation is used.</p>
+<p>I will just go ahead and write the code here for our <em>custom function dispatching solution</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Key</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="n">Hashable</span>
+<span class="n">StaticDispatcher</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Signature</span><span class="p">],</span> <span class="n">Key</span><span class="p">]</span>
+<span class="n">RuntimeDispatcher</span> <span class="o">=</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">BoundArguments</span><span class="p">],</span> <span class="n">Key</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">custom_dispatch</span><span class="p">(</span>
+    <span class="n">static_dispatcher</span><span class="p">:</span> <span class="n">StaticDispatcher</span><span class="p">,</span>
+    <span class="n">runtime_dispatcher</span><span class="p">:</span> <span class="n">RuntimeDispatcher</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="n">default_impl</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="n">default_signature</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="n">registry</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="n">bound_args</span> <span class="o">=</span> <span class="n">default_signature</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">runtime_dispatcher</span><span class="p">(</span><span class="n">bound_args</span><span class="p">)</span>
+            <span class="n">func_impl</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default_impl</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">func_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">register_decorator</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">partial</span><span class="p">(</span><span class="n">register_decorator</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span><span class="p">)</span>
+
+            <span class="n">func_sig</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="n">key</span> <span class="ow">or</span> <span class="n">static_dispatcher</span><span class="p">(</span><span class="n">func_sig</span><span class="p">)</span>
+            <span class="n">registry</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span>
+            <span class="k">return</span> <span class="n">func</span>
+
+        <span class="n">wrapper</span><span class="o">.</span><span class="n">register</span> <span class="o">=</span> <span class="n">register_decorator</span>
+        <span class="k">return</span> <span class="n">wrapper</span>
+
+    <span class="k">return</span> <span class="n">decorator</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dispatching-based-on-types">
+<h2>Dispatching Based on Types<a class="headerlink" href="#dispatching-based-on-types" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_static_key</span><span class="p">(</span><span class="n">signature</span><span class="p">:</span> <span class="n">Signature</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the annotation of x (from function signature).&quot;&quot;&quot;</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="n">signature</span><span class="o">.</span><span class="n">parameters</span>
+    <span class="k">return</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">annotation</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">annotation</span>
+
+
+<span class="k">def</span> <span class="nf">get_runtime_key</span><span class="p">(</span><span class="n">bound_arguments</span><span class="p">:</span> <span class="n">BoundArguments</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Type</span><span class="p">:</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">bound_arguments</span><span class="o">.</span><span class="n">arguments</span>
+    <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]),</span> <span class="nb">type</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">])</span>
+
+
+<span class="n">dispatch</span> <span class="o">=</span> <span class="n">custom_dispatch</span><span class="p">(</span>
+    <span class="n">static_dispatcher</span><span class="o">=</span><span class="n">get_static_key</span><span class="p">,</span>
+    <span class="n">runtime_dispatcher</span><span class="o">=</span><span class="n">get_runtime_key</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="nd">@dispatch</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;default implementation&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+
+<span class="nd">@f</span><span class="o">.</span><span class="n">register</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;int implementation&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+
+<span class="nd">@f</span><span class="o">.</span><span class="n">register</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;float-int implementation&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@f</span><span class="o">.</span><span class="n">register</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;str-str implementation&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int implementation 1 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float-int implementation
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;goodbye&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str-str implementation hello
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dispatch-based-on-values">
+<h2>Dispatch Based on Values<a class="headerlink" href="#dispatch-based-on-values" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prediction_static_dispatcher</span><span class="p">(</span><span class="n">signature</span><span class="p">:</span> <span class="n">Signature</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No static dispatching possible.&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">prediction_runtime_dispatcher</span><span class="p">(</span>
+    <span class="n">bound_arguments</span><span class="p">:</span> <span class="n">BoundArguments</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">bound_arguments</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">]</span>
+    <span class="n">finish</span> <span class="o">=</span> <span class="n">bound_arguments</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;finish&quot;</span><span class="p">]</span>
+
+    <span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="n">today</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;start-past&quot;</span>
+    <span class="k">if</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">finish</span> <span class="o">-</span> <span class="n">today</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;far-in-future&quot;</span>
+
+
+<span class="n">prediction_dispatcher</span> <span class="o">=</span> <span class="n">custom_dispatch</span><span class="p">(</span>
+    <span class="n">static_dispatcher</span><span class="o">=</span><span class="n">prediction_static_dispatcher</span><span class="p">,</span>
+    <span class="n">runtime_dispatcher</span><span class="o">=</span><span class="n">prediction_runtime_dispatcher</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="nd">@prediction_dispatcher</span>
+<span class="k">def</span> <span class="nf">predict_future</span><span class="p">(</span>
+    <span class="n">start</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span>
+    <span class="n">finish</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base function for predicting the future&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You will do great things with Python! from </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">finish</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@predict_future</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;start-past&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">finish</span><span class="p">:</span> <span class="n">date</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;Predicting the past is easy! You will soon read an article about Python function dispatching.&quot;</span>
+    <span class="p">)</span>
+
+
+<span class="nd">@predict_future</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s2">&quot;far-in-future&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_</span><span class="p">(</span><span class="n">start</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span> <span class="n">finish</span><span class="p">:</span> <span class="n">date</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;Predicting far into the future is also easy... robots will take over the world!&quot;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="n">yesterday</span> <span class="o">=</span> <span class="n">today</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">predict_future</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">yesterday</span><span class="p">,</span> <span class="n">finish</span><span class="o">=</span><span class="n">today</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting the past is easy! You will soon read an article about Python function dispatching.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">next_year</span> <span class="o">=</span> <span class="n">today</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">365</span><span class="p">)</span>
+<span class="n">predict_future</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">today</span><span class="p">,</span> <span class="n">finish</span><span class="o">=</span><span class="n">next_year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicting far into the future is also easy... robots will take over the world!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_week_from_today</span> <span class="o">=</span> <span class="n">today</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">predict_future</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">today</span><span class="p">,</span> <span class="n">finish</span><span class="o">=</span><span class="n">one_week_from_today</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>You will do great things with Python! from 2023-08-28 to 2023-09-04!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>I hope you learnt a lot reading this article.
+Most importantly, I hope you see that, with Python,
+you can do just about anything!</p>
+<p>The only caveat is that it’s up to you
+to make sure that your final solution <em>improved your code</em>
+instead of <em>making it worse</em>… It’s still not clear to me whether
+custom-function-dispatching leads to better or worse code.
+I’ll let you be the judge of that.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "nicobako_blog"
+        },
+        kernelOptions: {
+            name: "nicobako_blog",
+            path: "./articles"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'nicobako_blog'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="good_documentation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">On Good Documentation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="wordle.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Best Wordle Words</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#existing-function-dispatching-solutions">Existing Function Dispatching Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functools-dispatch"><code class="docutils literal notranslate"><span class="pre">functools.dispatch</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multipledispatch"><code class="docutils literal notranslate"><span class="pre">multipledispatch</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-dispatching-works">How Dispatching Works</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-vs-runtime">Static vs Runtime</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-dispatching-solution">Custom Dispatching Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispatching-based-on-types">Dispatching Based on Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispatch-based-on-values">Dispatch Based on Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nico Bakomihalis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -16,12 +16,12 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: "3.10"
+        python-version: "3.11"
     - name: Install dependencies
       run: |
         sudo apt-get install -y pandoc
         python -m pip install --upgrade pip wheel
-        python -m pip install -r requirements-ci.txt
+        python -m pip install -r requirements.txt
         ipython kernel install --user --name=nicobako.github.io
     - name: Build blog
       run: |

@@ -6,6 +6,20 @@ https://nicobako.github.io
 
 ## Building the code
 
-For the steps required to build the documentation,
-and deploy it to GitHub Pages, check out
-[publish-gh-pages.yml](.github/workflows/publish-gh-pages.yml).
+```bash
+python -m venv .venv
+source .venv/Scripts/activate
+python -m install --upgrade pip wheel
+pip install -r requirements.txt
+
+# build blog
+ipython kernel install --user --name=nicobako_blog
+jupyter-book build blog
+
+# deploy
+rm -rf docs
+mv blog/_build/html/ docs
+git add.
+git commit -m "message"
+git push
+```

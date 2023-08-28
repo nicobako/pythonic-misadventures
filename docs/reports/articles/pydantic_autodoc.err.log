@@ -1,0 +1,101 @@
+Traceback (most recent call last):
+  File "C:\nb\projects\blog\.venv\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\nb\projects\blog\.venv\Lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\nb\projects\blog\.venv\Lib\site-packages\jupyter_core\utils\__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\asyncio\base_events.py", line 650, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\contextlib.py", line 222, in __aexit__
+    await self.gen.athrow(typ, value, traceback)
+  File "C:\nb\projects\blog\.venv\Lib\site-packages\nbclient\client.py", line 650, in async_setup_kernel
+    yield
+  File "C:\nb\projects\blog\.venv\Lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\nb\projects\blog\.venv\Lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\nb\projects\blog\.venv\Lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+class AutoDocBase(pd.BaseModel):
+    class Doc:
+        short_description: str
+        long_description: str
+
+
+def generate_docs_markdown(cls: Type[AutoDocBase]) -> str:
+    doc = ""
+    doc += f"# {cls.__name__}\n\n"
+    doc += f"{cls.Doc.short_description}\n\n"
+    doc += f"{cls.Doc.long_description}\n\n"
+    doc += "## Fields\n\n"
+    for name, field in cls.__fields__.items():
+        field_info: pd.fields.FieldInfo = field.field_info
+        doc += f"### {name}\n\n"
+        doc += f"{field_info.description}\n\n"
+        for constraint in field_info.get_constraints():
+            doc += (
+                f"* constraint : `{constraint} = {getattr(field_info, constraint)}`\n\n"
+            )
+
+    return doc
+
+
+class BaseModel(AutoDocBase):
+    def __init_subclass__(cls: Type[AutoDocBase]) -> None:
+        cls.__doc__ = generate_docs_markdown(cls)
+
+
+class Person(BaseModel):
+    class Doc:
+        short_description = "Short description of a Person."
+        long_description = "Long description of a person."
+
+    name: str = pd.Field(
+        ..., description="Name of a person.", regex=r"[A-Z][a-zA-Z\s]+"
+    )
+    age: int = pd.Field(..., description="Age of a person.", gt=0, lt=150)
+
+
+print(Person.__doc__)
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mPydanticUserError[0m                         Traceback (most recent call last)
+Cell [1;32mIn[2], line 30[0m
+[0;32m     26[0m     [38;5;28;01mdef[39;00m [38;5;21m__init_subclass__[39m([38;5;28mcls[39m: Type[AutoDocBase]) [38;5;241m-[39m[38;5;241m>[39m [38;5;28;01mNone[39;00m:
+[0;32m     27[0m         [38;5;28mcls[39m[38;5;241m.[39m[38;5;18m__doc__[39m [38;5;241m=[39m generate_docs_markdown([38;5;28mcls[39m)
+[1;32m---> 30[0m [38;5;28;43;01mclass[39;49;00m[43m [49m[38;5;21;43;01mPerson[39;49;00m[43m([49m[43mBaseModel[49m[43m)[49m[43m:[49m
+[0;32m     31[0m [43m    [49m[38;5;28;43;01mclass[39;49;00m[43m [49m[38;5;21;43;01mDoc[39;49;00m[43m:[49m
+[0;32m     32[0m [43m        [49m[43mshort_description[49m[43m [49m[38;5;241;43m=[39;49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mShort description of a Person.[39;49m[38;5;124;43m"[39;49m
+
+Cell [1;32mIn[2], line 35[0m, in [0;36mPerson[1;34m()[0m
+[0;32m     32[0m     short_description [38;5;241m=[39m [38;5;124m"[39m[38;5;124mShort description of a Person.[39m[38;5;124m"[39m
+[0;32m     33[0m     long_description [38;5;241m=[39m [38;5;124m"[39m[38;5;124mLong description of a person.[39m[38;5;124m"[39m
+[1;32m---> 35[0m name: [38;5;28mstr[39m [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mField[49m[43m([49m
+[0;32m     36[0m [43m    [49m[38;5;241;43m.[39;49m[38;5;241;43m.[39;49m[38;5;241;43m.[39;49m[43m,[49m[43m [49m[43mdescription[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mName of a person.[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43mregex[49m[38;5;241;43m=[39;49m[38;5;124;43mr[39;49m[38;5;124;43m"[39;49m[38;5;124;43m[A-Z][a-zA-Z[39;49m[38;5;124;43m\[39;49m[38;5;124;43ms]+[39;49m[38;5;124;43m"[39;49m
+[0;32m     37[0m [43m[49m[43m)[49m
+[0;32m     38[0m age: [38;5;28mint[39m [38;5;241m=[39m pd[38;5;241m.[39mField([38;5;241m.[39m[38;5;241m.[39m[38;5;241m.[39m, description[38;5;241m=[39m[38;5;124m"[39m[38;5;124mAge of a person.[39m[38;5;124m"[39m, gt[38;5;241m=[39m[38;5;241m0[39m, lt[38;5;241m=[39m[38;5;241m150[39m)
+
+File [1;32mC:\nb\projects\blog\.venv\Lib\site-packages\pydantic\fields.py:789[0m, in [0;36mField[1;34m(default, default_factory, alias, alias_priority, validation_alias, serialization_alias, title, description, examples, exclude, discriminator, json_schema_extra, frozen, validate_default, repr, init_var, kw_only, pattern, strict, gt, ge, lt, le, multiple_of, allow_inf_nan, max_digits, decimal_places, min_length, max_length, union_mode, **extra)[0m
+[0;32m    787[0m regex [38;5;241m=[39m extra[38;5;241m.[39mpop([38;5;124m'[39m[38;5;124mregex[39m[38;5;124m'[39m, [38;5;28;01mNone[39;00m)  [38;5;66;03m# type: ignore[39;00m
+[0;32m    788[0m [38;5;28;01mif[39;00m regex [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m--> 789[0m     [38;5;28;01mraise[39;00m PydanticUserError([38;5;124m'[39m[38;5;124m`regex` is removed. use `pattern` instead[39m[38;5;124m'[39m, code[38;5;241m=[39m[38;5;124m'[39m[38;5;124mremoved-kwargs[39m[38;5;124m'[39m)
+[0;32m    791[0m [38;5;28;01mif[39;00m extra:
+[0;32m    792[0m     warn(
+[0;32m    793[0m         [38;5;124m'[39m[38;5;124mUsing extra keyword arguments on `Field` is deprecated and will be removed.[39m[38;5;124m'[39m
+[0;32m    794[0m         [38;5;124m'[39m[38;5;124m Use `json_schema_extra` instead.[39m[38;5;124m'[39m
+[0;32m    795[0m         [38;5;124mf[39m[38;5;124m'[39m[38;5;124m (Extra keys: [39m[38;5;132;01m{[39;00m[38;5;124m"[39m[38;5;124m, [39m[38;5;124m"[39m[38;5;241m.[39mjoin(k[38;5;241m.[39m[38;5;21m__repr__[39m()[38;5;250m [39m[38;5;28;01mfor[39;00m[38;5;250m [39mk[38;5;250m [39m[38;5;129;01min[39;00m[38;5;250m [39mextra[38;5;241m.[39mkeys())[38;5;132;01m}[39;00m[38;5;124m)[39m[38;5;124m'[39m,
+[0;32m    796[0m         [38;5;167;01mDeprecationWarning[39;00m,
+[0;32m    797[0m     )
+
+[1;31mPydanticUserError[0m: `regex` is removed. use `pattern` instead
+
+For further information visit https://errors.pydantic.dev/2.3/u/removed-kwargs
+

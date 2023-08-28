@@ -1,0 +1,789 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>On Good Documentation &#8212; Nico&#39;s Blog</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid@9.0.1/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'articles/good_documentation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Custom Function Dispatching" href="function_dispatch.html" />
+    <link rel="prev" title="What if Music Used a Different System?" href="music.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Nico’s Blog
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Articles</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="music.html">What if Music Used a Different System?</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">On Good Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="function_dispatch.html">Custom Function Dispatching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wordle.html">Best Wordle Words</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maze.html">Solving a Maze</a></li>
+<li class="toctree-l1"><a class="reference internal" href="image_boundaries.html">Boundary Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">Treating pixels as vectors</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="sudoku.html">Sudoku Solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xarray_computations.html">xarray for modeling and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pydantic_autodoc.html">Autodocumenting Pydantic Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_flatten_a_python_dict.html">How to Flatten a Python <code class="docutils literal notranslate"><span class="pre">dict</span></code></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project Euler</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/index.html">Project Euler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_1.html">Problem 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_2.html">Problem 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_3.html">Problem 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_4.html">Problem 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_5.html">Problem 5</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_6.html">Problem 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_7.html">Problem 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../project_euler/problem_11.html">Problem 11</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">More Information</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../info/about_the_author.html">About Nico Bakomihalis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../info/about_this_blog.html">About this Blog</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/nicobako/nicobako.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nicobako/nicobako.github.io/edit/master/blog/articles/good_documentation.py" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/nicobako/nicobako.github.io/issues/new?title=Issue%20on%20page%20%2Farticles/good_documentation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/articles/good_documentation.py" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.py</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>On Good Documentation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blogging-is-a-form-of-documentation">Blogging is a Form of Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons Learned</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#staying-up-to-date">Staying Up-to-date</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-easily-updated">Is Easily Updated</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributing-documentation">Distributing Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-to-reproduce">Easy to Reproduce</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-easily-suggest-improvements">Can Easily Suggest Improvements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-of-this-blog">Structure of This Blog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-an-article-process-overview">Writing an Article - Process Overview</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="on-good-documentation">
+<h1>On Good Documentation<a class="headerlink" href="#on-good-documentation" title="Permalink to this heading">#</a></h1>
+<p>No matter what your role, whether you’re a manager,
+or you’re fresh-out-of-college, chances are you need to write some documentation.</p>
+<p>We need to write documentation for all sorts of reasons.
+Sometimes we need to document our progress on a task, or outline the steps of a process,
+or create a users manual for a a tool.</p>
+<p>Sometimes our documentation is in the form of a word document,
+presentation slides, a formal report, or a simple <code class="docutils literal notranslate"><span class="pre">README.txt</span></code>.</p>
+<p>Sadly, even though we are all writing documentation,
+very few people <em>enjoy</em> writing documentation.
+and very few people succeed in writing <em>good documentation</em>.</p>
+<p>It took me a while to realize just how important writing <em>good documentatin</em> is,
+and that, when we set up our <em>documentation infrastructure</em> properly,
+we can <em>actually have fun writing good documentation</em>!</p>
+<section id="blogging-is-a-form-of-documentation">
+<h2>Blogging is a Form of Documentation<a class="headerlink" href="#blogging-is-a-form-of-documentation" title="Permalink to this heading">#</a></h2>
+<p>I first began writing this blog with the intention of learning
+important skills for creating <em>professional-level</em> documentation.</p>
+<p>I treated this blog as a testing ground for exploring
+a documentation infrastructure that can ensure
+that documentation is always of professional quality.
+All of my design decisions bore this in mind.</p>
+<p>Of course, I made plenty of mistakes along the way,
+and wrote plenty of <em>bad documentation</em>
+before I developed a better system, and subsequently, better documentation.</p>
+</section>
+<section id="lessons-learned">
+<h2>Lessons Learned<a class="headerlink" href="#lessons-learned" title="Permalink to this heading">#</a></h2>
+<p>Writing <em>good documentation</em> entails much more than just <em>writing</em>.
+How do you ensure that your documentation is <em>correct</em>, <em>up-to-date</em>,
+of <em>high-quality</em>, and, most importantly, <em>looks good</em>?</p>
+<p>I’ve learnt that having a solid continuous integration pipeline,
+complete with quality-assurance, testing, building, and deployment,
+is essential to having high-quality documentation.</p>
+<p>In essence, the same principles that apply to haivg *good softawre&gt;
+apply to having <em>good documentation</em>.</p>
+<section id="staying-up-to-date">
+<h3>Staying Up-to-date<a class="headerlink" href="#staying-up-to-date" title="Permalink to this heading">#</a></h3>
+<p>Technology moves so quickly that documentation goes out-of-date faster than we can write it.
+So, how do we ensure that it is always <em>up-to-date</em>?</p>
+<p>In order to keep documentation stay <em>up-to-date</em> it must be <em>executable</em>.
+This means that any images/plots in the documentation are freshly generated.</p>
+<p>A common use case would be needing to add a plot to some documentation.
+Imagine I want to get sales data for the last <em>n</em> number of days.
+Instead of <em>copy-pasting</em> an image of a plot created elsewhere, I just make the plot right here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+
+<span class="k">def</span> <span class="nf">get_sales_data</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">last_n_days</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the sales data for `last_n_days`.</span>
+
+<span class="sd">    Here I&#39;ll create fake data, but in the real world it</span>
+<span class="sd">    is probably in a database of some kind.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+    <span class="n">days</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">today</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">last_n_days</span><span class="p">)])</span>
+    <span class="n">sales</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">days</span><span class="p">))]</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;date&quot;</span><span class="p">:</span> <span class="n">days</span><span class="p">,</span> <span class="s2">&quot;sales&quot;</span><span class="p">:</span> <span class="n">sales</span><span class="p">})</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;date&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+
+<span class="k">def</span> <span class="nf">plot_sales</span><span class="p">(</span><span class="o">*</span><span class="p">,</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot sales data.&quot;&quot;&quot;</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sales&quot;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Sales [$]&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">get_sales_data</span><span class="p">(</span><span class="n">last_n_days</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plot_sales</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9b35a98965d95765e56262abcb2100b45b72c89512c97ebdd2e7888d30985cc9.png" src="../_images/9b35a98965d95765e56262abcb2100b45b72c89512c97ebdd2e7888d30985cc9.png" />
+</div>
+</div>
+<p>This is made possible by such wonderful tools as <a class="reference external" href="https://jupyter.org/">Jupyter notebooks</a>,
+which allow us to mix <em>code</em> and <em>text</em> into one <em>executable document</em>.</p>
+<p>Initially, I used Jupyter notebooks for this blog, and still
+consider it a solid choice. I currently use <a class="reference external" href="https://jupytext.readthedocs.io/en/latest/formats.html#the-percent-format">the percent py format</a>
+for reasons I’ll elaborate on later.</p>
+</section>
+<section id="is-easily-updated">
+<h3>Is Easily Updated<a class="headerlink" href="#is-easily-updated" title="Permalink to this heading">#</a></h3>
+<p>No matter how hard you try, there will always be a <em>bug</em> or <em>issue</em>
+that will need to be fixed.
+The question is: how easily can I find and fix bugs in the documentation?</p>
+<p>For example, imagine that my <em>sales</em> from the previous example were off by a factor of 2!
+In the database the sales are stored in “cents”, and I thought it was “dollars”.
+Since the plot is generated right here, this is really easy to fix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert sales from cents to dollars</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;sales&quot;</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">0.01</span>
+<span class="n">plot_sales</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4e97b4516a9909fd8924d5651fff508fce0e4af19a084d1626f316bf59937c78.png" src="../_images/4e97b4516a9909fd8924d5651fff508fce0e4af19a084d1626f316bf59937c78.png" />
+</div>
+</div>
+<p>One reason I switched from using Jupyter notebooks to using percent-format
+Python scripts was precisely because Python scripts (which are plain text files)
+are much easier to modify and fix than Jupyter notebooks (which are JSON files).</p>
+</section>
+<section id="distributing-documentation">
+<h3>Distributing Documentation<a class="headerlink" href="#distributing-documentation" title="Permalink to this heading">#</a></h3>
+<p>There’s also more to <em>easily updating</em> than just fixing code.
+You must distribute the fixed changes to your audience.
+How do you ensure your readers get the latest documentation?</p>
+<p>For that, having a continuous integration system
+which automagically deploys the documentation is essential.
+This blog uses
+<a class="reference external" href="https://docs.github.com/en/actions">GitHub Actions</a>
+to automate the testing, building, and deployment of this blog,
+and <a class="reference external" href="https://pages.github.com/">GitHub Pages</a> for hosting the blog.</p>
+</section>
+<section id="easy-to-reproduce">
+<h3>Easy to Reproduce<a class="headerlink" href="#easy-to-reproduce" title="Permalink to this heading">#</a></h3>
+<p>Reproducibility is one of the foundational concepts of the <em>scientific method</em>.
+It is an essential part of <em>peer reviewed research</em>.
+If your results can’t be reproduced, then there is a <strong>real problem</strong>.</p>
+<p>The documentation should be able to be generated from the command-line,
+and having continuous integration is really helpful here.</p>
+<p>In this blog people can see the text, the plots, but also the code!
+This has the added benefit that people can understand how their plots were created.
+If they ever need to improve anything, they can more easily do that.</p>
+</section>
+<section id="can-easily-suggest-improvements">
+<h3>Can Easily Suggest Improvements<a class="headerlink" href="#can-easily-suggest-improvements" title="Permalink to this heading">#</a></h3>
+<p>All documentation will have some issues and/or inaccuracies.
+It should be as easy as possible for avid users to be able to suggest improvements.</p>
+<p>This blog used to be built using <a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a>,
+which is a solid tool,
+but I now use <a class="reference external" href="https://jupyterbook.org">Jupyter Book</a>.
+Besides having a really nice layout,
+Jupyter Book provides other wonderful functionality.</p>
+<p>On the top right of the page you will see links to the Git Repository,
+as well as links for creating an <em>issue</em> and suggesting a change.</p>
+</section>
+</section>
+<section id="structure-of-this-blog">
+<h2>Structure of This Blog<a class="headerlink" href="#structure-of-this-blog" title="Permalink to this heading">#</a></h2>
+<p>Anyway, it’s time to wrap up this post,
+and what better way to do that than with a diagram
+made <em>automagically</em> with code?</p>
+<p>This diagram is built using
+<a class="reference external" href="https://github.com/mgaitan/sphinxcontrib-mermaid">mermaid extension for Sphinx</a>,
+which itself uses
+<a class="reference external" href="https://mermaid-js.github.io/mermaid/#/">mermaid.js</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This diagram is subject to getting <em>out-of-date</em>.</p>
+</div>
+<section id="writing-an-article-process-overview">
+<h3>Writing an Article - Process Overview<a class="headerlink" href="#writing-an-article-process-overview" title="Permalink to this heading">#</a></h3>
+<div class="mermaid">
+            flowchart TB
+    write(Write/Edit Article)
+    build(Build Blog)
+
+    write --&gt; build
+
+    happy{Hapy with Article?}
+
+    build --&gt; happy
+
+    commit(git commit)
+
+    happy --&gt;|Yes| commit
+    happy --&gt;|No| write
+
+    pre-commit(pre-commit)
+    pre-commit-successful{pre-commit Successful?}
+    push(git push)
+
+    commit --&gt; pre-commit
+    pre-commit --&gt; pre-commit-successful
+    pre-commit-successful --&gt;|Yes| push
+    pre-commit-successful --&gt;|No| write
+
+    run-ci(Run Continuous Integration)
+    push --&gt; run-ci
+    ci-successful{CI Successful?}
+
+    run-ci --&gt; ci-successful
+
+    deploy(Deploy)
+    ci-successful --&gt;|Yes| deploy
+    ci-successful --&gt;|No| write
+        </div></section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>Writing good documentation is a lot like writing good software:</p>
+<ul class="simple">
+<li><p>Do your best to write <em>correct</em> documentation</p></li>
+<li><p>In the event that any portion of the documentation is <em>incorrect</em></p>
+<ul>
+<li><p>Fix the issue quickly</p></li>
+<li><p>Distribute correct documentation quickly to all readers</p></li>
+</ul>
+</li>
+</ul>
+<p>Having a robust infrastructure for testing, building, and deploying
+your documentation is key to having <em>good documentation</em>.</p>
+<p>Making your documentation easy to fix is key to ensuring that
+your documentation <em>stays good</em> over time.</p>
+<p>Your solution to <em>good documentation</em> will look different than mine,
+but the <em>principles of good documentation</em> will be the same.
+Actually, yours might be better…</p>
+<p>Anyway, happy documenting!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "nicobako_blog"
+        },
+        kernelOptions: {
+            name: "nicobako_blog",
+            path: "./articles"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'nicobako_blog'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="music.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">What if Music Used a Different System?</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="function_dispatch.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Custom Function Dispatching</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#blogging-is-a-form-of-documentation">Blogging is a Form of Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lessons-learned">Lessons Learned</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#staying-up-to-date">Staying Up-to-date</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-easily-updated">Is Easily Updated</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributing-documentation">Distributing Documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#easy-to-reproduce">Easy to Reproduce</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-easily-suggest-improvements">Can Easily Suggest Improvements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-of-this-blog">Structure of This Blog</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-an-article-process-overview">Writing an Article - Process Overview</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nico Bakomihalis
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
