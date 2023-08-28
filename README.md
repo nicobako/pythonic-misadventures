@@ -19,6 +19,7 @@ jupyter-book build blog
 # deploy
 rm -rf docs
 mv blog/_build/html/ docs
+touch docs/.nojekkyl
 git add.
 git commit -m "message"
 git push
