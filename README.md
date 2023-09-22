@@ -7,20 +7,21 @@ https://nicobako.github.io
 ## Building the code
 
 ```bash
+# set up
 python -m venv .venv
 source .venv/Scripts/activate
 python -m install --upgrade pip wheel
 pip install -r requirements.txt
-
-# build blog
 ipython kernel install --user --name=nicobako_blog
+
+# build
 jupyter-book build blog
 
 # deploy
 rm -rf docs
 mv blog/_build/html/ docs
-touch docs/.nojekkyl
+touch docs/.nojekyll
 git add.
-git commit -m "message"
+git commit -m "updated blog"
 git push
 ```
