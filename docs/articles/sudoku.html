@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Sudoku Solver &#8212; Nico&#39;s Blog</title>
+    <title>Sudoku Solver &#8212; Pythonic Misadventures</title>
   
   
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -76,6 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -136,13 +146,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Pythonic Misadventures - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Pythonic Misadventures - Home"/>`);</script>
   
   
 </a></div>
@@ -243,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io" target="_blank"
+      <li><a href="https://github.com/nicobako/nicobako.github.io/pythonic_misadventures" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -260,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io/edit/master/blog/articles/sudoku.py" target="_blank"
+      <li><a href="https://github.com/nicobako/nicobako.github.io/pythonic_misadventures/edit/master/book/articles/sudoku.py" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +288,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io/issues/new?title=Issue%20on%20page%20%2Farticles/sudoku.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/nicobako/nicobako.github.io/pythonic_misadventures/issues/new?title=Issue%20on%20page%20%2Farticles/sudoku.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,10 +372,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -372,7 +383,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -569,7 +580,7 @@ let’s visualize it.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/44c26763e82ba7d522ad717174121aebde586f5cc34c475144de2b679c7e1aac.png" src="../_images/44c26763e82ba7d522ad717174121aebde586f5cc34c475144de2b679c7e1aac.png" />
+<img alt="../_images/8c52321bfc88dd1f40a14955dc1224232c508e4aa3135ae541dcfd2635ccb14a.png" src="../_images/8c52321bfc88dd1f40a14955dc1224232c508e4aa3135ae541dcfd2635ccb14a.png" />
 </div>
 </div>
 </section>
@@ -615,10 +626,10 @@ up into graphs whose nodes are only connected in a single way.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/303319205d0a908f0fbc08086fedb55293061afa73c7ca827ed6c57748a1e492.png" src="../_images/303319205d0a908f0fbc08086fedb55293061afa73c7ca827ed6c57748a1e492.png" />
-<img alt="../_images/1b79386066bbd6069ba345289904ba9ce041001ba9831f17b33c59a182e3d4ba.png" src="../_images/1b79386066bbd6069ba345289904ba9ce041001ba9831f17b33c59a182e3d4ba.png" />
-<img alt="../_images/24415abc1a424c0d665de89c4959ba3aeaa2f691bcbda1851cc37f82c8409e7a.png" src="../_images/24415abc1a424c0d665de89c4959ba3aeaa2f691bcbda1851cc37f82c8409e7a.png" />
-<img alt="../_images/edaa91708a70913e8c68db781bff17865b7d64c884ea18f044ff6a4d963bb744.png" src="../_images/edaa91708a70913e8c68db781bff17865b7d64c884ea18f044ff6a4d963bb744.png" />
+<img alt="../_images/7e9078493a115ac083dc483763383e2d3445a82bbde65c59dd72f7ff3a2459d9.png" src="../_images/7e9078493a115ac083dc483763383e2d3445a82bbde65c59dd72f7ff3a2459d9.png" />
+<img alt="../_images/d2fd85a28ab7fee4af0cfae76ebef92be11976c5f47043c1c76b2c9d54a47b75.png" src="../_images/d2fd85a28ab7fee4af0cfae76ebef92be11976c5f47043c1c76b2c9d54a47b75.png" />
+<img alt="../_images/16ab21b177ea7264950a08c1ecfc56662bdfc69584ab907a4e7260436a346238.png" src="../_images/16ab21b177ea7264950a08c1ecfc56662bdfc69584ab907a4e7260436a346238.png" />
+<img alt="../_images/471374340089ac388e068c14ca52371ac3e1228c44597484a5c11c13307dda0a.png" src="../_images/471374340089ac388e068c14ca52371ac3e1228c44597484a5c11c13307dda0a.png" />
 </div>
 </div>
 <p>The <em>row</em>, <em>column</em>, and <em>box</em> connections make sense to you,
@@ -643,7 +654,7 @@ The same is true for all of the different <em>connection graphs</em> above.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/838c493fdc8b55d44cd4b40764d2e18c9d905167e33f4d88475d400f299ac875.png" src="../_images/838c493fdc8b55d44cd4b40764d2e18c9d905167e33f4d88475d400f299ac875.png" />
+<img alt="../_images/e0cc4849ee212c481c8f10c8c66424c3f2c536a0a87f03e63545bc17560b3fe7.png" src="../_images/e0cc4849ee212c481c8f10c8c66424c3f2c536a0a87f03e63545bc17560b3fe7.png" />
 </div>
 </div>
 <p>Here’s the first <em>box</em>.</p>
@@ -655,7 +666,7 @@ The same is true for all of the different <em>connection graphs</em> above.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7fe64d6519b9a0a18d6d1278ff7af3b085c45457d62351cc1b32aaaf8cd56411.png" src="../_images/7fe64d6519b9a0a18d6d1278ff7af3b085c45457d62351cc1b32aaaf8cd56411.png" />
+<img alt="../_images/671b04d4a9ab8aa1541363217247a045a627b5463dce0e7d1c7f0839fbd32b66.png" src="../_images/671b04d4a9ab8aa1541363217247a045a627b5463dce0e7d1c7f0839fbd32b66.png" />
 </div>
 </div>
 <p>I won’t plot al of the connected components of all
@@ -682,10 +693,10 @@ Let’s take a look at all the different ways an individual node is connected to
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/62b5ec9584d7b92891280f431364e24bae9f97a3f00375d38979547507358444.png" src="../_images/62b5ec9584d7b92891280f431364e24bae9f97a3f00375d38979547507358444.png" />
-<img alt="../_images/79ba89d39fbda0f0fc5fd2376ebed061d7d35c034a6dea7895dcb6de3474c6af.png" src="../_images/79ba89d39fbda0f0fc5fd2376ebed061d7d35c034a6dea7895dcb6de3474c6af.png" />
-<img alt="../_images/52bbf881d3732789820700c756d3296296ffdb8924e0ecfc9ab82025cc836ea0.png" src="../_images/52bbf881d3732789820700c756d3296296ffdb8924e0ecfc9ab82025cc836ea0.png" />
-<img alt="../_images/8659fa819d80d13352835098d32453e683f3e8ed61ce13ccfb57a36ef90df97c.png" src="../_images/8659fa819d80d13352835098d32453e683f3e8ed61ce13ccfb57a36ef90df97c.png" />
+<img alt="../_images/445c777314857b834dae8368ae85fc8392da743b18f5c84b627ae255da1b2a6a.png" src="../_images/445c777314857b834dae8368ae85fc8392da743b18f5c84b627ae255da1b2a6a.png" />
+<img alt="../_images/4d28a59f1718584b19fb1a83e61f436d5160a82d6f3d04e359a932648db6300f.png" src="../_images/4d28a59f1718584b19fb1a83e61f436d5160a82d6f3d04e359a932648db6300f.png" />
+<img alt="../_images/7bb00f8d85db4f7fbec64275f5a97e3cc1e7ee2ea43d03ff1e32760a8d57c014.png" src="../_images/7bb00f8d85db4f7fbec64275f5a97e3cc1e7ee2ea43d03ff1e32760a8d57c014.png" />
+<img alt="../_images/948a59ca60903a82207823941b9ed1a8af9d00119b0fd339ea481ef7f354b302.png" src="../_images/948a59ca60903a82207823941b9ed1a8af9d00119b0fd339ea481ef7f354b302.png" />
 </div>
 </div>
 </section>
@@ -804,8 +815,8 @@ work for a our sudoku where all values are <code class="docutils literal notrans
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3da0349b3c1ca9976539d12b3417b6af735986d7bf0b151eb49c9935c0ad5a81.png" src="../_images/3da0349b3c1ca9976539d12b3417b6af735986d7bf0b151eb49c9935c0ad5a81.png" />
-<img alt="../_images/9cfe5bddbc59517b8beae2e970c7edac3844d5f5016099cf42c967188a2cd11a.png" src="../_images/9cfe5bddbc59517b8beae2e970c7edac3844d5f5016099cf42c967188a2cd11a.png" />
+<img alt="../_images/a7d20beb95993673720c33c36d8ce2dca187878dfdcd6918a962e226515a3ef7.png" src="../_images/a7d20beb95993673720c33c36d8ce2dca187878dfdcd6918a962e226515a3ef7.png" />
+<img alt="../_images/c5626ff6276988ec6fbb6d17428fccdae13260112c5b7cb7cfe0f2a219a60d20.png" src="../_images/c5626ff6276988ec6fbb6d17428fccdae13260112c5b7cb7cfe0f2a219a60d20.png" />
 </div>
 </div>
 <p>So far we have laid the groundwork for solving sudokus,
@@ -851,7 +862,7 @@ Sadly, there are still two things we need to do:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/58fed8c10f8e8dc435c4a4587bc24521b16d0ee2e1dad0bfa07eacef9f59ecee.png" src="../_images/58fed8c10f8e8dc435c4a4587bc24521b16d0ee2e1dad0bfa07eacef9f59ecee.png" />
+<img alt="../_images/f29879122307d158efa716cd7dc670a23d98f07bb673aa23ce27bc3498c5e8d1.png" src="../_images/f29879122307d158efa716cd7dc670a23d98f07bb673aa23ce27bc3498c5e8d1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -872,7 +883,7 @@ Sadly, there are still two things we need to do:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7fb2e60097691b72931d0f39648e9d93f9d4b02ea136c625249127f26cff7e81.png" src="../_images/7fb2e60097691b72931d0f39648e9d93f9d4b02ea136c625249127f26cff7e81.png" />
+<img alt="../_images/c39e1a8ca16c6bb8c3f20a70873448b3f30d5924c78761e89e2086f61fe659d1.png" src="../_images/c39e1a8ca16c6bb8c3f20a70873448b3f30d5924c78761e89e2086f61fe659d1.png" />
 </div>
 </div>
 </section>
@@ -937,8 +948,8 @@ so let’s start with an <em>easy</em> sudoku.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/abfb6f7f98903766fb78b994cecd431fe57da2968c3070578a710a858afd7f71.png" src="../_images/abfb6f7f98903766fb78b994cecd431fe57da2968c3070578a710a858afd7f71.png" />
-<img alt="../_images/d4e4ef3a66dede86c0478c57a0263804af87bc85b14794f94270579cce1d7361.png" src="../_images/d4e4ef3a66dede86c0478c57a0263804af87bc85b14794f94270579cce1d7361.png" />
+<img alt="../_images/4c55cd007e511f5ac31cbab1adfe96089da78609e6203633472426ae52cca848.png" src="../_images/4c55cd007e511f5ac31cbab1adfe96089da78609e6203633472426ae52cca848.png" />
+<img alt="../_images/5397e9fbc8b516d912c13d218d62269abd0972241a7175439396b1e1634f4304.png" src="../_images/5397e9fbc8b516d912c13d218d62269abd0972241a7175439396b1e1634f4304.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -948,8 +959,8 @@ so let’s start with an <em>easy</em> sudoku.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d8fd2a716a4c02002747f5017f37d58f35ff060fddea63342dd6ad1b685ac0b6.png" src="../_images/d8fd2a716a4c02002747f5017f37d58f35ff060fddea63342dd6ad1b685ac0b6.png" />
-<img alt="../_images/0e84ae9690962ddf6cce87a66610d82c2ae2ad2e32e9258cf5e2ea28e85f2507.png" src="../_images/0e84ae9690962ddf6cce87a66610d82c2ae2ad2e32e9258cf5e2ea28e85f2507.png" />
+<img alt="../_images/58c20a966901076f5ba43254cf30f74382af8bc88fa26950b6745e0c816193c1.png" src="../_images/58c20a966901076f5ba43254cf30f74382af8bc88fa26950b6745e0c816193c1.png" />
+<img alt="../_images/6b3a186aec500d9f5b342433c4c9637ca8362bafc0f6a4381fcee2c415fd9efc.png" src="../_images/6b3a186aec500d9f5b342433c4c9637ca8362bafc0f6a4381fcee2c415fd9efc.png" />
 </div>
 </div>
 <p>So, we can solve <em>easy</em> sudokus… how about <em>medium</em> sudokus?</p>
@@ -973,8 +984,8 @@ so let’s start with an <em>easy</em> sudoku.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5c1744b40c73e4aa1d5e95330657e177f15b9e67b72b7c417a8d48f9af8e4d23.png" src="../_images/5c1744b40c73e4aa1d5e95330657e177f15b9e67b72b7c417a8d48f9af8e4d23.png" />
-<img alt="../_images/977b038ebfad4215b632f9c0a05ed38d45bae5d61a83decbdb3742e31e304a93.png" src="../_images/977b038ebfad4215b632f9c0a05ed38d45bae5d61a83decbdb3742e31e304a93.png" />
+<img alt="../_images/9225bdc87234bb60fe9a44ec205b7a364f53d6edfb8d879669c38880cb0ce3b0.png" src="../_images/9225bdc87234bb60fe9a44ec205b7a364f53d6edfb8d879669c38880cb0ce3b0.png" />
+<img alt="../_images/9c062d46f19798d21b13cf98dd73d0c6c148345d9d80932b4b2c028454d29e67.png" src="../_images/9c062d46f19798d21b13cf98dd73d0c6c148345d9d80932b4b2c028454d29e67.png" />
 </div>
 </div>
 <p>We can’t solve <em>medium</em> sudokus with only the <em>unique candidates</em> technique.
@@ -1009,8 +1020,8 @@ then that node <em>must be the 9th value</em>.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5c1744b40c73e4aa1d5e95330657e177f15b9e67b72b7c417a8d48f9af8e4d23.png" src="../_images/5c1744b40c73e4aa1d5e95330657e177f15b9e67b72b7c417a8d48f9af8e4d23.png" />
-<img alt="../_images/e59d4961ab641c54ad9c04ddcf2dc2d3f6f6ed5f85fd7d3cf66e9984b37465c7.png" src="../_images/e59d4961ab641c54ad9c04ddcf2dc2d3f6f6ed5f85fd7d3cf66e9984b37465c7.png" />
+<img alt="../_images/9225bdc87234bb60fe9a44ec205b7a364f53d6edfb8d879669c38880cb0ce3b0.png" src="../_images/9225bdc87234bb60fe9a44ec205b7a364f53d6edfb8d879669c38880cb0ce3b0.png" />
+<img alt="../_images/b23e7a4e8ed515496b5bc46035e0076a03a49ec37b5bd0adf5ae8adf2634a89c.png" src="../_images/b23e7a4e8ed515496b5bc46035e0076a03a49ec37b5bd0adf5ae8adf2634a89c.png" />
 </div>
 </div>
 <p>Looks like this technique is just what we needed in order to solve
@@ -1035,8 +1046,8 @@ our <em>medium</em> sudoku. Now, can it solve a <em>hard</em> sudoku?</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f27ee9287fb139d28824a46e623f3c308caa70241c71d769301f206ada5f9035.png" src="../_images/f27ee9287fb139d28824a46e623f3c308caa70241c71d769301f206ada5f9035.png" />
-<img alt="../_images/2f3b0e4921591c0ff32300e53548672a2034f53b0e69c650276d572f037bef6c.png" src="../_images/2f3b0e4921591c0ff32300e53548672a2034f53b0e69c650276d572f037bef6c.png" />
+<img alt="../_images/57ec5d9a059c961c8d6e8aec60dd0258de9c8268a46227655e28f9a93552cf64.png" src="../_images/57ec5d9a059c961c8d6e8aec60dd0258de9c8268a46227655e28f9a93552cf64.png" />
+<img alt="../_images/35d8f2f48885efb0547e1b4264a791497e3119ddeab2508fbcec1c657c0ff6cc.png" src="../_images/35d8f2f48885efb0547e1b4264a791497e3119ddeab2508fbcec1c657c0ff6cc.png" />
 </div>
 </div>
 <p>Wow! we just solved a <em>hard</em> sudoku!
@@ -1062,8 +1073,8 @@ Can’t believe it!</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b999b51f6947f2bdf7ff331afaa786805bc3ffcf582ff8f30278bf5cd5677d4b.png" src="../_images/b999b51f6947f2bdf7ff331afaa786805bc3ffcf582ff8f30278bf5cd5677d4b.png" />
-<img alt="../_images/b4dcd56b68bd25bf6b3e491abba87a6eca5530928071cd7fb8dafda4bf0da0d5.png" src="../_images/b4dcd56b68bd25bf6b3e491abba87a6eca5530928071cd7fb8dafda4bf0da0d5.png" />
+<img alt="../_images/4bda50a7c56ea07e0f7d9166ae534f6a7a7286ee669ec8e944aad8d70e39cd02.png" src="../_images/4bda50a7c56ea07e0f7d9166ae534f6a7a7286ee669ec8e944aad8d70e39cd02.png" />
+<img alt="../_images/e6f3516cc886fb668787825a20046e2cebec38b3639a434c4edf142a1477e444.png" src="../_images/e6f3516cc886fb668787825a20046e2cebec38b3639a434c4edf142a1477e444.png" />
 </div>
 </div>
 <p>Haha, no chance!</p>
@@ -1084,7 +1095,7 @@ but still, I hate the idea of resorting to <em>brute force</em> techniques.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>66.3 ms ± 3.79 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30 ms ± 459 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -1109,27 +1120,26 @@ then we have a 50% chance of guessing it right!</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "nicobako_blog"
+            mode: "python"
         },
         kernelOptions: {
-            name: "nicobako_blog",
+            name: "pythonic_misadventures",
             path: "./articles"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'nicobako_blog'</script>
+    <script>kernelName = 'pythonic_misadventures'</script>
 
                 </article>
               
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="images.html"
@@ -1149,10 +1159,7 @@ then we have a 50% chance of guessing it right!</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1230,8 +1237,8 @@ By Nico Bakomihalis
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Boundary Detection &#8212; Nico&#39;s Blog</title>
+    <title>Boundary Detection &#8212; Pythonic Misadventures</title>
   
   
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -76,6 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -136,13 +146,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Pythonic Misadventures - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Pythonic Misadventures - Home"/>`);</script>
   
   
 </a></div>
@@ -243,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io" target="_blank"
+      <li><a href="https://github.com/nicobako/nicobako.github.io/pythonic_misadventures" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -260,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io/edit/master/blog/articles/image_boundaries.py" target="_blank"
+      <li><a href="https://github.com/nicobako/nicobako.github.io/pythonic_misadventures/edit/master/book/articles/image_boundaries.py" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +288,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io/issues/new?title=Issue%20on%20page%20%2Farticles/image_boundaries.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/nicobako/nicobako.github.io/pythonic_misadventures/issues/new?title=Issue%20on%20page%20%2Farticles/image_boundaries.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,10 +372,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -372,7 +383,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -446,7 +457,9 @@ reach a satisfactory solution.
 First, let’s load our image using <em>matplotlib</em> facilities.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">PIL.Image</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -456,40 +469,15 @@ First, let’s load our image using <em>matplotlib</em> facilities.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/scikit-image/scikit-image/blob/main/skimage/data/astronaut.png?raw=true&quot;</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;../res/astronaut.png&quot;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img_path</span><span class="p">))</span> <span class="o">/</span> <span class="mf">256.0</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">img_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/scikit-image/scikit-image/blob/main/skimage/data/astronaut.png?raw=true&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_url</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="nn">File C:\nb\projects\blog\.venv\Lib\site-packages\matplotlib\image.py:1558,</span> in <span class="ni">imread</span><span class="nt">(fname, format)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1554</span> <span class="n">img_open</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1555</span>     <span class="n">PIL</span><span class="o">.</span><span class="n">PngImagePlugin</span><span class="o">.</span><span class="n">PngImageFile</span> <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;png&#39;</span> <span class="k">else</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1556</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">scheme</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1557</span>     <span class="c1"># Pillow doesn&#39;t handle URLs directly.</span>
-<span class="ne">-&gt; </span><span class="mi">1558</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1559</span>         <span class="s2">&quot;Please open the URL for reading and pass the &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1560</span>         <span class="s2">&quot;result to Pillow, e.g. with &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1561</span>         <span class="s2">&quot;``np.array(PIL.Image.open(urllib.request.urlopen(url)))``.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1562</span>         <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1563</span> <span class="k">with</span> <span class="n">img_open</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1564</span>     <span class="k">return</span> <span class="p">(</span><span class="n">_pil_png_to_float_array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1565</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">PIL</span><span class="o">.</span><span class="n">PngImagePlugin</span><span class="o">.</span><span class="n">PngImageFile</span><span class="p">)</span> <span class="k">else</span>
-<span class="g g-Whitespace">   </span><span class="mi">1566</span>             <span class="n">pil_to_array</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
-
-<span class="ne">ValueError</span>: Please open the URL for reading and pass the result to Pillow, e.g. with ``np.array(PIL.Image.open(urllib.request.urlopen(url)))``.
-</pre></div>
-</div>
+<img alt="../_images/97b0112b28fafcf9e20447b87c3709167bc150055206b5a3ae4d88fbfa741e8f.png" src="../_images/97b0112b28fafcf9e20447b87c3709167bc150055206b5a3ae4d88fbfa741e8f.png" />
 </div>
 </div>
 <section id="representing-connected-pixels">
@@ -533,6 +521,9 @@ we simply create a connection between the two pixels.</p>
 <span class="n">draw_graph</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c31b7f025b8d4a666c01c0ddb416f17bb797bd8c8601d593d5ca3a2fdb9b5afd.png" src="../_images/c31b7f025b8d4a666c01c0ddb416f17bb797bd8c8601d593d5ca3a2fdb9b5afd.png" />
 </div>
 </div>
 </section>
@@ -580,6 +571,9 @@ of all of our dot products so we get an idea of what we’re working with.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a8f5d8a345e7b26fa3a2bc4c346f700e73060261fdecc62a2ed59a465cc97517.png" src="../_images/a8f5d8a345e7b26fa3a2bc4c346f700e73060261fdecc62a2ed59a465cc97517.png" />
 </div>
 </div>
 </section>
@@ -654,6 +648,14 @@ outlined above to split up the image into objects.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Object Size Threshold : 3
+Dot Product Threshold : 0.5
+Num Objects Detected  : 152
+</pre></div>
+</div>
+<img alt="../_images/599d80a201404ad6b5baa771938e2ef53ef655f52a2a924e91df66db1988e309.png" src="../_images/599d80a201404ad6b5baa771938e2ef53ef655f52a2a924e91df66db1988e309.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -665,6 +667,14 @@ outlined above to split up the image into objects.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Object Size Threshold : 20
+Dot Product Threshold : 0.3
+Num Objects Detected  : 49
+</pre></div>
+</div>
+<img alt="../_images/f6def0387e0a0a1a39ea69ed4bbcacd55c97905ade9eff1bcdab125213f2ca59.png" src="../_images/f6def0387e0a0a1a39ea69ed4bbcacd55c97905ade9eff1bcdab125213f2ca59.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -675,6 +685,14 @@ outlined above to split up the image into objects.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Object Size Threshold : 50
+Dot Product Threshold : 0.75
+Num Objects Detected  : 23
+</pre></div>
+</div>
+<img alt="../_images/1b6e94694a58840957aa69615ab253146bbf631ac99f42a55662d13a407d3b41.png" src="../_images/1b6e94694a58840957aa69615ab253146bbf631ac99f42a55662d13a407d3b41.png" />
 </div>
 </div>
 </section>
@@ -696,27 +714,26 @@ Namely, use an image proceesing library!</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "nicobako_blog"
+            mode: "python"
         },
         kernelOptions: {
-            name: "nicobako_blog",
+            name: "pythonic_misadventures",
             path: "./articles"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'nicobako_blog'</script>
+    <script>kernelName = 'pythonic_misadventures'</script>
 
                 </article>
               
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="maze.html"
@@ -736,10 +753,7 @@ Namely, use an image proceesing library!</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -807,8 +821,8 @@ By Nico Bakomihalis
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>

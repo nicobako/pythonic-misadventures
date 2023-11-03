@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>xarray for modeling and simulation &#8212; Nico&#39;s Blog</title>
+    <title>xarray for modeling and simulation &#8212; Pythonic Misadventures</title>
   
   
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -78,6 +79,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -138,13 +148,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Pythonic Misadventures - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Pythonic Misadventures - Home"/>`);</script>
   
   
 </a></div>
@@ -245,7 +256,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io" target="_blank"
+      <li><a href="https://github.com/nicobako/nicobako.github.io/pythonic_misadventures" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -262,7 +273,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io/edit/master/blog/articles/xarray_computations.py" target="_blank"
+      <li><a href="https://github.com/nicobako/nicobako.github.io/pythonic_misadventures/edit/master/book/articles/xarray_computations.py" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -279,7 +290,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io/issues/new?title=Issue%20on%20page%20%2Farticles/xarray_computations.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/nicobako/nicobako.github.io/pythonic_misadventures/issues/new?title=Issue%20on%20page%20%2Farticles/xarray_computations.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -363,10 +374,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -374,7 +385,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -500,7 +511,7 @@ that informs us of the projectile’s <em>x- y- and z-acceleration</em> over tim
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e69e863faa298357231bc1b056af6a4b6e1be22ff62b68a505b8afae01f4922f.png" src="../_images/e69e863faa298357231bc1b056af6a4b6e1be22ff62b68a505b8afae01f4922f.png" />
+<img alt="../_images/d0c7255af08367ea81883270c01fe2b8a4932df5c3b93b43e9cf5d0691b29d67.png" src="../_images/d0c7255af08367ea81883270c01fe2b8a4932df5c3b93b43e9cf5d0691b29d67.png" />
 </div>
 </div>
 </section>
@@ -513,7 +524,7 @@ but believe me, it makes things much more expressive and clear.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">axis</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
     <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">],</span>
-    <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;axis&quot;</span><span class="p">),</span>
+    <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;ax&quot;</span><span class="p">),</span>
     <span class="n">attrs</span><span class="o">=</span><span class="p">{</span>
         <span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Axis&quot;</span><span class="p">,</span>
     <span class="p">},</span>
@@ -886,11 +897,11 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (axis: 3)&gt;
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray (ax: 3)&gt;
 array([&#x27;x&#x27;, &#x27;y&#x27;, &#x27;z&#x27;], dtype=&#x27;&lt;U1&#x27;)
-Dimensions without coordinates: axis
+Dimensions without coordinates: ax
 Attributes:
-    long_name:  Axis</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span>axis</span>: 3</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-1c3a830b-d087-4d97-8260-43d2c5e6e1f2' class='xr-array-in' type='checkbox' checked><label for='section-1c3a830b-d087-4d97-8260-43d2c5e6e1f2' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;x&#x27; &#x27;y&#x27; &#x27;z&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;x&#x27;, &#x27;y&#x27;, &#x27;z&#x27;], dtype=&#x27;&lt;U1&#x27;)</pre></div></div></li><li class='xr-section-item'><input id='section-bd0b1bba-3bdb-48da-a6fe-502fe986eff1' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-bd0b1bba-3bdb-48da-a6fe-502fe986eff1' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-da4e72b7-c6ec-4c85-8c05-f9c1d10ad08f' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-da4e72b7-c6ec-4c85-8c05-f9c1d10ad08f' class='xr-section-summary'  title='Expand/collapse section'>Indexes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-edb3af54-6e5c-4f6e-bb7a-990f683e8f4d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-edb3af54-6e5c-4f6e-bb7a-990f683e8f4d' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Axis</dd></dl></div></li></ul></div></div></div></div>
+    long_name:  Axis</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span>ax</span>: 3</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-4f4dfb6a-f304-40a6-9497-2b80c7e0729e' class='xr-array-in' type='checkbox' checked><label for='section-4f4dfb6a-f304-40a6-9497-2b80c7e0729e' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;x&#x27; &#x27;y&#x27; &#x27;z&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;x&#x27;, &#x27;y&#x27;, &#x27;z&#x27;], dtype=&#x27;&lt;U1&#x27;)</pre></div></div></li><li class='xr-section-item'><input id='section-17cceac1-f56e-47cd-902d-abf7ea99e180' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-17cceac1-f56e-47cd-902d-abf7ea99e180' class='xr-section-summary'  title='Expand/collapse section'>Coordinates: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-cf5aa0e5-c8c1-446b-8a5e-b72c5c7f3753' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-cf5aa0e5-c8c1-446b-8a5e-b72c5c7f3753' class='xr-section-summary'  title='Expand/collapse section'>Indexes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-1bfc264c-552c-44fe-9b78-8a8652bc0aa9' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1bfc264c-552c-44fe-9b78-8a8652bc0aa9' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Axis</dd></dl></div></li></ul></div></div></div></div>
 </div>
 </section>
 <section id="acceleration">
@@ -914,13 +925,13 @@ acceleration data with some noise.</p>
     <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;long_name&quot;</span><span class="p">:</span> <span class="s2">&quot;Acceleration&quot;</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;m/s2&quot;</span><span class="p">},</span>
 <span class="p">)</span>
 
-<span class="n">acceleration</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;axis&quot;</span><span class="p">)</span>
+<span class="n">acceleration</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;ax&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8355a6167a8c63a5da14742c48fd7996242681128164aec9147dd1a4b21378af.png" src="../_images/8355a6167a8c63a5da14742c48fd7996242681128164aec9147dd1a4b21378af.png" />
+<img alt="../_images/d27c9bb783292ee7b2e53a132fb896eee5b5a0113c29a5f9f89c52702f553265.png" src="../_images/d27c9bb783292ee7b2e53a132fb896eee5b5a0113c29a5f9f89c52702f553265.png" />
 </div>
 </div>
 </section>
@@ -935,7 +946,7 @@ Think of a <code class="docutils literal notranslate"><span class="pre">Dataset<
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulation</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">time</span><span class="p">,</span>
-        <span class="s2">&quot;axis&quot;</span><span class="p">:</span> <span class="n">axis</span><span class="p">,</span>
+        <span class="s2">&quot;ax&quot;</span><span class="p">:</span> <span class="n">axis</span><span class="p">,</span>
         <span class="s2">&quot;acceleration&quot;</span><span class="p">:</span> <span class="n">acceleration</span><span class="p">,</span>
     <span class="p">}</span>
 <span class="p">)</span>
@@ -1008,7 +1019,7 @@ for a small explanation as to why.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6351ba90bdce251b61823c6d20d6a091faabd157d049c6d6bd93efc8b0208a9f.png" src="../_images/6351ba90bdce251b61823c6d20d6a091faabd157d049c6d6bd93efc8b0208a9f.png" />
+<img alt="../_images/77fd4cc28eb08cac3a90b90ab9449d2ceb9c28e9a4cff89e895330c1b2b901b0.png" src="../_images/77fd4cc28eb08cac3a90b90ab9449d2ceb9c28e9a4cff89e895330c1b2b901b0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1020,13 +1031,13 @@ for a small explanation as to why.</p>
 <span class="n">simulation</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;long_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Velocity&quot;</span>
 <span class="n">simulation</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;units&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;m/s&quot;</span>
 
-<span class="n">simulation</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;axis&quot;</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;ax&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ae21fa6a4a28a4084e67ecce91916b600ea4888c99d83f2e9f295ee6e9ffec70.png" src="../_images/ae21fa6a4a28a4084e67ecce91916b600ea4888c99d83f2e9f295ee6e9ffec70.png" />
+<img alt="../_images/ecb4d6a4caa3a23c788f649c1892790514c518f92f3f156383f5cbb894fbff04.png" src="../_images/ecb4d6a4caa3a23c788f649c1892790514c518f92f3f156383f5cbb894fbff04.png" />
 </div>
 </div>
 </section>
@@ -1045,13 +1056,13 @@ projectile’s position at every time stamp.</p>
 <span class="n">simulation</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;long_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Position&quot;</span>
 <span class="n">simulation</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;units&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;m&quot;</span>
 
-<span class="n">simulation</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;axis&quot;</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;ax&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d7d7d92c94dc95715b0a2f220bd945f4ef2737abc5416c02ed622e2b33d656f9.png" src="../_images/d7d7d92c94dc95715b0a2f220bd945f4ef2737abc5416c02ed622e2b33d656f9.png" />
+<img alt="../_images/2c85e409b51640ea2815a464df4c2edca9b0d698f3cce70ed5b79a00673c0c04.png" src="../_images/2c85e409b51640ea2815a464df4c2edca9b0d698f3cce70ed5b79a00673c0c04.png" />
 </div>
 </div>
 <p>You’ll see that some of the position <em>z</em> values are negative.
@@ -1061,78 +1072,16 @@ since <em>z</em> values of 0.0 correspond to ground-level.</p>
 simulation once the projectile reaches a <em>z</em> value of <em>0</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos_above_z_0</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">simulation</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">simulation</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pos_above_z_0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">simulation</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">z</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">simulation</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;axis&quot;</span><span class="p">)</span>
+<span class="n">simulation</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;ax&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">z</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;z&quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">simulation</span> <span class="o">=</span> <span class="n">simulation</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">z</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">simulation</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;axis&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="nn">File C:\nb\projects\blog\.venv\Lib\site-packages\xarray\core\common.py:1181,</span> in <span class="ni">DataWithCoords.where</span><span class="nt">(self, cond, other, drop)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1178</span>     <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">cond</span><span class="o">.</span><span class="n">sizes</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-<span class="g g-Whitespace">   </span><span class="mi">1179</span>         <span class="n">indexers</span><span class="p">[</span><span class="n">dim</span><span class="p">]</span> <span class="o">=</span> <span class="n">_get_indexer</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1181</span>     <span class="bp">self</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="o">**</span><span class="n">indexers</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1182</span>     <span class="n">cond</span> <span class="o">=</span> <span class="n">cond</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="o">**</span><span class="n">indexers</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1184</span> <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">where_method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cond</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span>
-
-<span class="nn">File C:\nb\projects\blog\.venv\Lib\site-packages\xarray\core\dataset.py:2874,</span> in <span class="ni">Dataset.isel</span><span class="nt">(self, indexers, drop, missing_dims, **indexers_kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2872</span> <span class="n">indexers</span> <span class="o">=</span> <span class="n">either_dict_or_kwargs</span><span class="p">(</span><span class="n">indexers</span><span class="p">,</span> <span class="n">indexers_kwargs</span><span class="p">,</span> <span class="s2">&quot;isel&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2873</span> <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">is_fancy_indexer</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">indexers</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
-<span class="ne">-&gt; </span><span class="mi">2874</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_isel_fancy</span><span class="p">(</span><span class="n">indexers</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="n">drop</span><span class="p">,</span> <span class="n">missing_dims</span><span class="o">=</span><span class="n">missing_dims</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2876</span> <span class="c1"># Much faster algorithm for when all indexers are ints, slices, one-dimensional</span>
-<span class="g g-Whitespace">   </span><span class="mi">2877</span> <span class="c1"># lists, or zero or one-dimensional np.ndarray&#39;s</span>
-<span class="g g-Whitespace">   </span><span class="mi">2878</span> <span class="n">indexers</span> <span class="o">=</span> <span class="n">drop_dims_from_indexers</span><span class="p">(</span><span class="n">indexers</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims</span><span class="p">,</span> <span class="n">missing_dims</span><span class="p">)</span>
-
-<span class="nn">File C:\nb\projects\blog\.venv\Lib\site-packages\xarray\core\dataset.py:2945,</span> in <span class="ni">Dataset._isel_fancy</span><span class="nt">(self, indexers, drop, missing_dims)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2942</span> <span class="n">selected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_replace_with_new_dims</span><span class="p">(</span><span class="n">variables</span><span class="p">,</span> <span class="n">coord_names</span><span class="p">,</span> <span class="n">indexes</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2944</span> <span class="c1"># Extract coordinates from indexers</span>
-<span class="ne">-&gt; </span><span class="mi">2945</span> <span class="n">coord_vars</span><span class="p">,</span> <span class="n">new_indexes</span> <span class="o">=</span> <span class="n">selected</span><span class="o">.</span><span class="n">_get_indexers_coords_and_indexes</span><span class="p">(</span><span class="n">indexers</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2946</span> <span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">coord_vars</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2947</span> <span class="n">indexes</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">new_indexes</span><span class="p">)</span>
-
-<span class="nn">File C:\nb\projects\blog\.venv\Lib\site-packages\xarray\core\dataset.py:2753,</span> in <span class="ni">Dataset._get_indexers_coords_and_indexes</span><span class="nt">(self, indexers)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2749</span> <span class="c1"># we don&#39;t need to call align() explicitly or check indexes for</span>
-<span class="g g-Whitespace">   </span><span class="mi">2750</span> <span class="c1"># alignment, because merge_variables already checks for exact alignment</span>
-<span class="g g-Whitespace">   </span><span class="mi">2751</span> <span class="c1"># between dimension coordinates</span>
-<span class="g g-Whitespace">   </span><span class="mi">2752</span> <span class="n">coords</span><span class="p">,</span> <span class="n">indexes</span> <span class="o">=</span> <span class="n">merge_coordinates_without_align</span><span class="p">(</span><span class="n">coords_list</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2753</span> <span class="n">assert_coordinate_consistent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2755</span> <span class="c1"># silently drop the conflicted variables.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2756</span> <span class="n">attached_coords</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">coords</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">}</span>
-
-<span class="nn">File C:\nb\projects\blog\.venv\Lib\site-packages\xarray\core\coordinates.py:769,</span> in <span class="ni">assert_coordinate_consistent</span><span class="nt">(obj, coords)</span>
-<span class="g g-Whitespace">    </span><span class="mi">766</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span>     <span class="c1"># make sure there are no conflict in dimension coordinates</span>
-<span class="g g-Whitespace">    </span><span class="mi">768</span>     <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">coords</span> <span class="ow">and</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">coords</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">coords</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">variable</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">769</span>         <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">770</span>             <span class="sa">f</span><span class="s2">&quot;dimension coordinate </span><span class="si">{</span><span class="n">k</span><span class="si">!r}</span><span class="s2"> conflicts between &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">771</span>             <span class="sa">f</span><span class="s2">&quot;indexed and indexing objects:</span><span class="se">\n</span><span class="si">{</span><span class="n">obj</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="s2">vs.</span><span class="se">\n</span><span class="si">{</span><span class="n">coords</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">772</span>         <span class="p">)</span>
-
-<span class="ne">IndexError</span>: dimension coordinate &#39;axis&#39; conflicts between indexed and indexing objects:
-<span class="o">&lt;</span><span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span> <span class="s1">&#39;axis&#39;</span> <span class="p">(</span><span class="n">axis</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span><span class="o">&gt;</span>
-<span class="n">array</span><span class="p">([</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;&lt;U1&#39;</span><span class="p">)</span>
-<span class="ne">Coordinates</span>:
-  <span class="o">*</span> <span class="n">axis</span>     <span class="p">(</span><span class="n">axis</span><span class="p">)</span> <span class="o">&lt;</span><span class="n">U1</span> <span class="s1">&#39;x&#39;</span> <span class="s1">&#39;y&#39;</span> <span class="s1">&#39;z&#39;</span>
-<span class="ne">Attributes</span>:
-    <span class="n">long_name</span><span class="p">:</span>  <span class="n">Axis</span>
-<span class="n">vs</span><span class="o">.</span>
-<span class="o">&lt;</span><span class="n">xarray</span><span class="o">.</span><span class="n">Variable</span> <span class="p">()</span><span class="o">&gt;</span>
-<span class="n">array</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;&lt;U1&#39;</span><span class="p">)</span>
-<span class="ne">Attributes</span>:
-    <span class="n">long_name</span><span class="p">:</span>  <span class="n">Axis</span>
-</pre></div>
-</div>
+<img alt="../_images/2c85e409b51640ea2815a464df4c2edca9b0d698f3cce70ed5b79a00673c0c04.png" src="../_images/2c85e409b51640ea2815a464df4c2edca9b0d698f3cce70ed5b79a00673c0c04.png" />
 </div>
 </div>
 </section>
@@ -1154,10 +1103,13 @@ We can use <code class="docutils literal notranslate"><span class="pre">xarray</
 <span class="n">simulation_interp</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;long_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Time Interpolated&quot;</span>
 <span class="n">simulation_interp</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;units&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;s&quot;</span>
 
-<span class="n">simulation_interp</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;axis&quot;</span><span class="p">)</span>
+<span class="n">simulation_interp</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;ax&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c057886799585a5d1041f7d0ba4bcf85e3f78eb3ad7fa081fec3ea7d42947f02.png" src="../_images/c057886799585a5d1041f7d0ba4bcf85e3f78eb3ad7fa081fec3ea7d42947f02.png" />
 </div>
 </div>
 <p>Take a look at how our new times are linearly spaced as opposed to
@@ -1171,15 +1123,26 @@ the original simulation’s time values.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/de75daab85a318c47013ccb50213764331aa064c3366717c376ef1dd4a75da7a.png" src="../_images/de75daab85a318c47013ccb50213764331aa064c3366717c376ef1dd4a75da7a.png" />
+</div>
 </div>
 <p>And, note that we have interpolated the entire simulation!
 That means that not only is our position interpolated, but so is our
 acceleration, and velocity!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulation_interp</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;axis&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulation_interp</span><span class="o">.</span><span class="n">velocity</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s2">&quot;ax&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x29ecd6d0d70&gt;,
+ &lt;matplotlib.lines.Line2D at 0x29ecd6d0da0&gt;,
+ &lt;matplotlib.lines.Line2D at 0x29ecd6d0e60&gt;]
+</pre></div>
+</div>
+<img alt="../_images/0bd592dfcb584217831563c12e26654d8ca0161411b0ec9abe8a3d0a6ed46bd9.png" src="../_images/0bd592dfcb584217831563c12e26654d8ca0161411b0ec9abe8a3d0a6ed46bd9.png" />
 </div>
 </div>
 </section>
@@ -1203,27 +1166,26 @@ modeling and simulation task!</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "nicobako_blog"
+            mode: "python"
         },
         kernelOptions: {
-            name: "nicobako_blog",
+            name: "pythonic_misadventures",
             path: "./articles"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'nicobako_blog'</script>
+    <script>kernelName = 'pythonic_misadventures'</script>
 
                 </article>
               
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="sudoku.html"
@@ -1243,10 +1205,7 @@ modeling and simulation task!</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1323,8 +1282,8 @@ By Nico Bakomihalis
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>
