@@ -2,24 +2,27 @@
 
 This is the code for my personal website.
 This code gets built into *html* and is hosted at
-https://nicobako.github.io
+https://pythonic-misadventures.nicobako.me
 
-## Building the code
+`book` directory contains the source-code for the book, while `docs` contains the github-pages-publishable book.
+
+## Building the Book
 
 ```bash
 # set up
 python -m venv .venv
 source .venv/Scripts/activate
-python -m install --upgrade pip wheel
+python -m pip install --upgrade pip wheel
 pip install -r requirements.txt
-ipython kernel install --user --name=nicobako_blog
+pre-commit install
+ipython kernel install --user --name=pythonic_misadventures
 
 # build
-jupyter-book build blog
+jupyter-book build book --warningiserror
 
 # deploy
 rm -rf docs
-mv blog/_build/html/ docs
+mv book/_build/html/ docs
 touch docs/.nojekyll
 touch  docs/CNAME
 echo "pythonic-misadventures.nicobako.me" > docs/CNAME

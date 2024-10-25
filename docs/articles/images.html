@@ -1,66 +1,62 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Treating pixels as vectors &#8212; Nico&#39;s Blog</title>
+    <title>Treating pixels as vectors &#8212; Pythonic Misadventures</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'articles/images';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -75,19 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,12 +109,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -129,9 +137,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -141,12 +153,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Pythonic Misadventures - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Pythonic Misadventures - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -204,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -213,14 +236,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -243,7 +266,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io" target="_blank"
+      <li><a href="https://github.com/nicobako/pythonic_misadventures" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -260,7 +283,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io/edit/master/blog/articles/images.py" target="_blank"
+      <li><a href="https://github.com/nicobako/pythonic_misadventures/edit/master/book/articles/images.py" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/nicobako/nicobako.github.io/issues/new?title=Issue%20on%20page%20%2Farticles/images.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/nicobako/pythonic_misadventures/issues/new?title=Issue%20on%20page%20%2Farticles/images.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -359,26 +382,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -422,10 +447,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="treating-pixels-as-vectors">
-<h1>Treating pixels as vectors<a class="headerlink" href="#treating-pixels-as-vectors" title="Permalink to this heading">#</a></h1>
+<h1>Treating pixels as vectors<a class="headerlink" href="#treating-pixels-as-vectors" title="Link to this heading">#</a></h1>
 <p>It is common knowledge that images can be thought
 of as a 2-dimensional collection of pixel values.
 But, has anyone ever told you how to think of pixel values?</p>
@@ -451,12 +476,14 @@ the is common with 3D vectors. However, instead of manipulating
 an XYZ coordinate in 3D space, we are manipulating an RGB pixel in color-space!</p>
 <p>This was a mind-bending thought experiment, and I hope you’ll enjoy it.</p>
 <section id="initial-imports">
-<h2>Initial imports<a class="headerlink" href="#initial-imports" title="Permalink to this heading">#</a></h2>
+<h2>Initial imports<a class="headerlink" href="#initial-imports" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">PIL.Image</span>
 <span class="kn">from</span> <span class="nn">scipy.spatial.transform</span> <span class="kn">import</span> <span class="n">Rotation</span>
 </pre></div>
 </div>
@@ -464,7 +491,7 @@ an XYZ coordinate in 3D space, we are manipulating an RGB pixel in color-space!<
 </div>
 </section>
 <section id="reading-an-image-as-a-numpy-array">
-<h2>Reading an image as a numpy array<a class="headerlink" href="#reading-an-image-as-a-numpy-array" title="Permalink to this heading">#</a></h2>
+<h2>Reading an image as a numpy array<a class="headerlink" href="#reading-an-image-as-a-numpy-array" title="Link to this heading">#</a></h2>
 <p>Here, we will use <a class="reference external" href="https://matplotlib.org/stable/tutorials/introductory/images.html#sphx-glr-tutorials-introductory-images-py"><em>matplotlib’s image functionality</em></a>
 since this offers more than what we need.</p>
 <p><em>Matplotlib</em> will convert our pixel values to <em>float32</em> with values ranging from [0.0 … 1.0].
@@ -472,40 +499,15 @@ This is perfect for our case. Typically, images are stored in <em>uint8</em> wit
 Since we are trying to do 3D math on our pixels, it is easier to use <em>float</em> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/scikit-image/scikit-image/blob/main/skimage/data/astronaut.png?raw=true&quot;</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_url</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;../res/astronaut.png&quot;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img_path</span><span class="p">))</span> <span class="o">/</span> <span class="mf">256.0</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">img_url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/scikit-image/scikit-image/blob/main/skimage/data/astronaut.png?raw=true&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">img</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_url</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="nn">File C:\nb\projects\blog\.venv\Lib\site-packages\matplotlib\image.py:1558,</span> in <span class="ni">imread</span><span class="nt">(fname, format)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1554</span> <span class="n">img_open</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1555</span>     <span class="n">PIL</span><span class="o">.</span><span class="n">PngImagePlugin</span><span class="o">.</span><span class="n">PngImageFile</span> <span class="k">if</span> <span class="n">ext</span> <span class="o">==</span> <span class="s1">&#39;png&#39;</span> <span class="k">else</span> <span class="n">PIL</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1556</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">parse</span><span class="o">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span><span class="o">.</span><span class="n">scheme</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1557</span>     <span class="c1"># Pillow doesn&#39;t handle URLs directly.</span>
-<span class="ne">-&gt; </span><span class="mi">1558</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1559</span>         <span class="s2">&quot;Please open the URL for reading and pass the &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1560</span>         <span class="s2">&quot;result to Pillow, e.g. with &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1561</span>         <span class="s2">&quot;``np.array(PIL.Image.open(urllib.request.urlopen(url)))``.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1562</span>         <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1563</span> <span class="k">with</span> <span class="n">img_open</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1564</span>     <span class="k">return</span> <span class="p">(</span><span class="n">_pil_png_to_float_array</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1565</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">PIL</span><span class="o">.</span><span class="n">PngImagePlugin</span><span class="o">.</span><span class="n">PngImageFile</span><span class="p">)</span> <span class="k">else</span>
-<span class="g g-Whitespace">   </span><span class="mi">1566</span>             <span class="n">pil_to_array</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
-
-<span class="ne">ValueError</span>: Please open the URL for reading and pass the result to Pillow, e.g. with ``np.array(PIL.Image.open(urllib.request.urlopen(url)))``.
-</pre></div>
-</div>
+<img alt="../_images/97b0112b28fafcf9e20447b87c3709167bc150055206b5a3ae4d88fbfa741e8f.png" src="../_images/97b0112b28fafcf9e20447b87c3709167bc150055206b5a3ae4d88fbfa741e8f.png" />
 </div>
 </div>
 <p>Since we’ll be doing some 3D math on our pixels,
@@ -570,7 +572,7 @@ so lets’s create a simple plotting function to correct any of this.</p>
 </div>
 </section>
 <section id="translations">
-<h2>Translations<a class="headerlink" href="#translations" title="Permalink to this heading">#</a></h2>
+<h2>Translations<a class="headerlink" href="#translations" title="Link to this heading">#</a></h2>
 <p>Think of translations like <em>sliding</em> the values higher or lower.
 We can translate only one color, or we can translate multiple colors
 at the same time.</p>
@@ -589,6 +591,9 @@ at the same time.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/a299c0c5b56d13de2344a9146ba055acf481cd8063c40e4033e4230db0cdbfab.png" src="../_images/a299c0c5b56d13de2344a9146ba055acf481cd8063c40e4033e4230db0cdbfab.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -596,11 +601,14 @@ at the same time.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/bfb7f05c61ed543d841a2a48aeffb9d5a88dd83203df38a97b3c97c3691eb162.png" src="../_images/bfb7f05c61ed543d841a2a48aeffb9d5a88dd83203df38a97b3c97c3691eb162.png" />
+</div>
 </div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="scaling">
-<h1>Scaling<a class="headerlink" href="#scaling" title="Permalink to this heading">#</a></h1>
+<h1>Scaling<a class="headerlink" href="#scaling" title="Link to this heading">#</a></h1>
 <p>Scaling is simply multiplying a color by a factor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -617,10 +625,13 @@ at the same time.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/5991390dd7967f7febdf4e74558169d94ecb8e873b681803fe0dc6522f9e7a8f.png" src="../_images/5991390dd7967f7febdf4e74558169d94ecb8e873b681803fe0dc6522f9e7a8f.png" />
+</div>
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="rotation">
-<h1>Rotation<a class="headerlink" href="#rotation" title="Permalink to this heading">#</a></h1>
+<h1>Rotation<a class="headerlink" href="#rotation" title="Link to this heading">#</a></h1>
 <p>Rotations are a bit more complicated to think about.
 In a cartesian coordinate system all axes are <em>orthogonal</em>,
 meaning that they are each perpendicular to one another.
@@ -671,6 +682,9 @@ which is akin to rotating about <em>grey</em>.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/5d74dbc24051351d205adad4aa4b2380a82f65abcf60d9172663a24a7ad1b5be.png" src="../_images/5d74dbc24051351d205adad4aa4b2380a82f65abcf60d9172663a24a7ad1b5be.png" />
+</div>
 </div>
 <p>Here’s what it looks like rotated about <em>gray</em>.</p>
 <div class="cell docutils container">
@@ -678,6 +692,9 @@ which is akin to rotating about <em>grey</em>.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rotate</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">rot</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/095b661502c4c161fa25606d7b11cc1001ebc85d9a8c848ca6337f2c93330f78.png" src="../_images/095b661502c4c161fa25606d7b11cc1001ebc85d9a8c848ca6337f2c93330f78.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -692,6 +709,9 @@ which is akin to rotating about <em>grey</em>.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/276f7bef0653af8fe12661412bf64428872707583630f7f611cd03157852b667.png" src="../_images/276f7bef0653af8fe12661412bf64428872707583630f7f611cd03157852b667.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -708,9 +728,12 @@ which is akin to rotating about <em>grey</em>.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/bd349e1e24c23a42d74834f68eb1521e948fe6dc1420dd756e485ed49fe67b16.png" src="../_images/bd349e1e24c23a42d74834f68eb1521e948fe6dc1420dd756e485ed49fe67b16.png" />
+</div>
 </div>
 <section id="custom-transformation-matrices">
-<h2>Custom Transformation Matrices<a class="headerlink" href="#custom-transformation-matrices" title="Permalink to this heading">#</a></h2>
+<h2>Custom Transformation Matrices<a class="headerlink" href="#custom-transformation-matrices" title="Link to this heading">#</a></h2>
 <p>Now I’m just going a little too far,
 but you can actually define custom transformation matrices.
 I don’t really know what I’m doing here, so I will
@@ -743,6 +766,9 @@ and nothing will happen.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/597e551ed08e75ff2de2e8ad19ab1c9d354df4e1c001b8be63b8004895ca37ec.png" src="../_images/597e551ed08e75ff2de2e8ad19ab1c9d354df4e1c001b8be63b8004895ca37ec.png" />
+</div>
 </div>
 <p>Now, let’s say we want to swap our Red and Green axes
 while leaving our Blue axis alone. We can probably achive
@@ -754,6 +780,9 @@ but it’s much easier to define a custom transformation matrix.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/c80518022de943ceeeb9ed09ee0a98bd6c05e4bc43ca2c90825de92b3252a4c2.png" src="../_images/c80518022de943ceeeb9ed09ee0a98bd6c05e4bc43ca2c90825de92b3252a4c2.png" />
+</div>
 </div>
 <p>You see how this did exactly what we said!
 The Red and Green swapped places!</p>
@@ -764,6 +793,9 @@ The Red and Green swapped places!</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/416d60ffae0df5d6e4eea4b12f22a8d90ea2c87b7f3f1296489ce5e10ae88841.png" src="../_images/416d60ffae0df5d6e4eea4b12f22a8d90ea2c87b7f3f1296489ce5e10ae88841.png" />
+</div>
 </div>
 <p>Which is the same as if we just used our previous <em>scaling</em> function.</p>
 <div class="cell docutils container">
@@ -771,6 +803,9 @@ The Red and Green swapped places!</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/416d60ffae0df5d6e4eea4b12f22a8d90ea2c87b7f3f1296489ce5e10ae88841.png" src="../_images/416d60ffae0df5d6e4eea4b12f22a8d90ea2c87b7f3f1296489ce5e10ae88841.png" />
 </div>
 </div>
 <p>We can even collapse colors into a single dimension,
@@ -782,6 +817,9 @@ Let’s collapse both <em>red</em> and <em>green</em> into the <em>blue</em> dim
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/1744bd194ec97fb64840528c5a8640d53bc0999cc30c176b150715a009bf6dba.png" src="../_images/1744bd194ec97fb64840528c5a8640d53bc0999cc30c176b150715a009bf6dba.png" />
+</div>
 </div>
 <p>Or collapse only one color into another dimension.
 Let’s collapse <em>red</em> into <em>blue</em>.</p>
@@ -791,10 +829,13 @@ Let’s collapse <em>red</em> into <em>blue</em>.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/ddd87f22de2a4e988d31ffaa1d3ecc9f4751e0ca2321b7a2ae60d89a36fd2253.png" src="../_images/ddd87f22de2a4e988d31ffaa1d3ecc9f4751e0ca2321b7a2ae60d89a36fd2253.png" />
+</div>
 </div>
 </section>
 <section id="magnitude">
-<h2>Magnitude<a class="headerlink" href="#magnitude" title="Permalink to this heading">#</a></h2>
+<h2>Magnitude<a class="headerlink" href="#magnitude" title="Link to this heading">#</a></h2>
 <p>We haven’t yet discussed getting the magnitude of a vector.
 This is its length, or distance from the origin.</p>
 <p>For colors, the origin is <em>black</em>, so its distance from <em>black</em>
@@ -818,6 +859,9 @@ can be thought of as its <em>brightness</em>.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/35f26563244d31a3cdaa9803b233b33185164377d80f3781e76f1022d6c8530b.png" src="../_images/35f26563244d31a3cdaa9803b233b33185164377d80f3781e76f1022d6c8530b.png" />
+</div>
 </div>
 <p>You see that some magnitudes are greater than <em>1.0</em>.
 We can normalize those.</p>
@@ -837,10 +881,13 @@ We can normalize those.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/50048b94e8439b16a42e755ca8e5213bc58f9dfe987516fdd5439129b26d926e.png" src="../_images/50048b94e8439b16a42e755ca8e5213bc58f9dfe987516fdd5439129b26d926e.png" />
+</div>
 </div>
 </section>
 <section id="direction">
-<h2>Direction<a class="headerlink" href="#direction" title="Permalink to this heading">#</a></h2>
+<h2>Direction<a class="headerlink" href="#direction" title="Link to this heading">#</a></h2>
 <p>So, what can we do with <em>direction</em>?
 Here’s an idea: The dot-product of two vectors
 returns the angle between those vectors.</p>
@@ -858,27 +905,26 @@ but this article is getting pretty long, so it’s probably time to wrap it up.<
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "nicobako_blog"
+            mode: "python"
         },
         kernelOptions: {
-            name: "nicobako_blog",
+            name: "pythonic_misadventures",
             path: "./articles"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'nicobako_blog'</script>
+    <script>kernelName = 'pythonic_misadventures'</script>
 
                 </article>
               
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="image_boundaries.html"
@@ -898,10 +944,7 @@ but this article is getting pretty long, so it’s probably time to wrap it up.<
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -909,6 +952,7 @@ but this article is getting pretty long, so it’s probably time to wrap it up.<
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -951,9 +995,10 @@ By Nico Bakomihalis
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -977,8 +1022,8 @@ By Nico Bakomihalis
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,8 +1,8 @@
 # python virtual environment
 .venv/
 
-# documentation build directory
-_build/
+# build intermediate dir
+book/_build/
 
 # jupyter notebook folders/files
 *.ipynb
