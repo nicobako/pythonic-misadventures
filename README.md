@@ -21,7 +21,9 @@ jupyter-book build blog
 rm -rf docs
 mv blog/_build/html/ docs
 touch docs/.nojekyll
-git add.
+touch  docs/CNAME
+echo "pythonic-misadventures.nicobako.me" > docs/CNAME
+git add .
 git commit -m "updated blog"
 git push
 ```
