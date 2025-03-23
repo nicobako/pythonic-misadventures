@@ -1,0 +1,13 @@
+name: pythonic-misadventures
+services:
+  pythonic-misadventures:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - type: bind
+        source: ./book/_build
+        target: /app/book/_build
+volumes:
+  pythonic-misadventures-docs:
+

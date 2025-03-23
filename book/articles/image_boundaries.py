@@ -18,6 +18,7 @@
 # ```{note}
 # Boundary detection refers to distinguishing unique objects in an image (e.g. these pixels are a unique object). Object detection refers to identifying unique objects in an image (e.g. this image contains a squirrel). This article is about boundary detection.
 # ```
+#
 # There are plenty of tools available for performing image processing,
 # but let's say that we want to implement our own *boudary detection* algorithm.
 # How would you go about that?

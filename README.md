@@ -18,7 +18,7 @@ pre-commit install
 ipython kernel install --user --name=pythonic_misadventures
 
 # build
-jupyter-book build book --warningiserror
+jupyter-book build book/ --warningiserror
 
 # deploy
 rm -rf docs
@@ -29,4 +29,14 @@ echo "pythonic-misadventures.nicobako.me" > docs/CNAME
 git add .
 git commit -m "updated blog"
 git push
+```
+
+# Docker
+
+```
+docker build -t pythonic-misadventures .
+docker run  \
+  --mount type=bind,src=/c/nb/projects/pythonic-misadventures/book/_build,dst=/app/book/_build \
+  -it pythonic-misadventures \
+  bash
 ```

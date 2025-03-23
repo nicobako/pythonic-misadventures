@@ -37,6 +37,7 @@ sphinx:
   extra_extensions:
     - sphinxcontrib.mermaid
   config:
+    # html_static_path: ['articles/res/']
     nb_custom_formats:
         .py:
             - jupytext.reads
