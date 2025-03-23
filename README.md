@@ -39,4 +39,5 @@ docker run  \
   --mount type=bind,src=/c/nb/projects/pythonic-misadventures/book/_build,dst=/app/book/_build \
   -it pythonic-misadventures \
   bash
+$ docker run  --mount type=bind,src=/c/nb/projects/pythonic-misadventures/book/_build,dst=/app/book/_build -it pythonic-misadventures jupyter-book build book
 ```
