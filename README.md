@@ -33,6 +33,8 @@ git push
 
 # Docker
 
+I'm new to docker, so these are just my personal notes on commands that have worked.
+
 ```
 docker build -t pythonic-misadventures .
 docker run  \
@@ -40,4 +42,15 @@ docker run  \
   -it pythonic-misadventures \
   bash
 $ docker run  --mount type=bind,src=/c/nb/projects/pythonic-misadventures/book/_build,dst=/app/book/_build -it pythonic-misadventures jupyter-book build book
+```
+
+```
+docker build -t pythonic-misadventures .
+docker run -d -p 8080:80 --name pythonic-misadventures pythonic-misadventures
+```
+
+```
+docker compose up -d
+rm -rf ./docs/
+docker container cp pythonic-misadventures:/usr/share/nginx/html ./docs/
 ```
