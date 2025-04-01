@@ -1,12 +1,48 @@
 name: pythonic-misadventures
 services:
-  pythonic-misadventures:
-    container_name: pythonic-misadventures
+  python:
+    container_name: pythonic-misadventures-python
     build:
       context: .
       dockerfile: Dockerfile
-      target: nginx
+      target: python
+    stdin_open: true # -i
+    tty: true # -t
+    develop:
+      watch:
+        - action: rebuild
+          path: requirements.txt
+          target: /python/requirements.txt
+  build:
+    container_name: pythonic-misadventures-build
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: build
+    depends_on:
+      - python
+    stdin_open: true # -i
+    tty: true # -t
+    volumes:
+      - book:/app/book/_build
+    develop:
+      watch:
+        - action: rebuild
+          path: book/
+          target: /app/book/
+  web-preview:
+    container_name: pythonic-misadventures-web-preview
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: web-preview
+    depends_on:
+      - build
     ports:
       - "8080:80"
-
-
+    develop:
+      watch:
+        - action: rebuild
+          path: book/
+volumes:
+  book:
