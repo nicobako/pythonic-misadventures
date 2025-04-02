@@ -24,7 +24,7 @@ services:
     stdin_open: true # -i
     tty: true # -t
     volumes:
-      - book:/app/book/_build
+      - book:/app/_build:rw
     develop:
       watch:
         - action: rebuild

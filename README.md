@@ -8,6 +8,13 @@ https://pythonic-misadventures.nicobako.me
 
 ## Building the Book
 
+```bask
+docker compose up --watch --build
+docker container cp pythonic-misadventures-web-preview:/usr/share/nginx/html ./docs/
+```
+
+### Manual instructions
+
 ```bash
 # set up
 python -m venv .venv
@@ -31,7 +38,7 @@ git commit -m "updated blog"
 git push
 ```
 
-# Docker
+# Docker Notes
 
 I'm new to docker, so these are just my personal notes on commands that have worked.
 
