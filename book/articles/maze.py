@@ -18,7 +18,6 @@
 # Solving mazes seems like a really good opportunity to continue exploring
 # using graph-processing techniques to solve interesting problems.
 
-
 # %%
 from pathlib import Path
 

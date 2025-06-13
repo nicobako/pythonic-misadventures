@@ -24,7 +24,9 @@ services:
     stdin_open: true # -i
     tty: true # -t
     volumes:
-      - book:/app/_build:rw
+      - type: volume
+        source: book
+        target: /_build
     develop:
       watch:
         - action: rebuild
@@ -39,7 +41,7 @@ services:
     depends_on:
       - build
     ports:
-      - "8080:80"
+      - "8088:80"
     develop:
       watch:
         - action: rebuild

@@ -1,4 +1,4 @@
-# Welcome to Nico's Blog - Edit
+# Welcome to Nico's Blog
 
 Hello, World! My name is [Nico Bakomihalis](info/about_the_author.md),
 and this is [my blog](info/about_this_blog.md).

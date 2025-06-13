@@ -2,13 +2,13 @@ FROM python:3.12-slim AS python
 WORKDIR /python
 COPY --chown=app:app ./requirements.txt /python/requirements.txt
 RUN pip install -r requirements.txt
+RUN ipython kernel install --user --name=pythonic_misadventures 
 
 # Build the documentation
 # Use the official Python 3.12 image as the base image
 FROM python AS build
 WORKDIR /app
 COPY --chown=app:app ./book /app/book
-RUN ipython kernel install --user --name=pythonic_misadventures 
 RUN jupyter-book build book --path-output=/_build
 RUN touch /_build/_build/html/.nojekyll
 RUN touch /_build/_build/html/CNAME
